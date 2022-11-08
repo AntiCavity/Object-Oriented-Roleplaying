@@ -6,12 +6,12 @@ public class Character {
 
 	String name;
 	int healthPoints;
-	int level;
-	Dictionary<String, List[]> attackSkills;
-	int energy;
+	//int level; // removing for now...
+	Skills[] attackSkills; // Skills list
+	int mana;
 	Armor armor;
 	Weapon weapon;
-	// armor adds health points to the character for now
+	// armor adds health points to the character for now...
 	Object debuff;
 	Object buff;
 	String CharClass;

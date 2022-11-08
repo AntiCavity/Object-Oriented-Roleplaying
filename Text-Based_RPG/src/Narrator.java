@@ -36,6 +36,8 @@ public class Narrator {
 		// if user enters /p: goes into the infinite while loop 
 		if (input == "/p") {
 			// starts character creation
+			System.out.println("Please select a class to start your adventure! /n -Rogue /n -Archer /n -Warrior /n "
+					+ "-Knight /n -Wizard /n -Bastard /n");
 			// inputs name
 			// inputs class
 			// narrative print statements

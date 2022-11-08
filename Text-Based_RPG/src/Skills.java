@@ -1,9 +1,14 @@
 
 public class Skills {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	String name;
+	String skillDescription;
+	int damage;
+	Object debuff;
+	Object buff;
+	int energyCost;
+	int heal; 
+	
+	
 
 }

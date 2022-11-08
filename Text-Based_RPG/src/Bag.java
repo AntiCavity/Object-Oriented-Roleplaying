@@ -1,9 +1,8 @@
 
 public class Bag {
+	//Loot bag class
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	Item loot;
 
-	}
 
 }
