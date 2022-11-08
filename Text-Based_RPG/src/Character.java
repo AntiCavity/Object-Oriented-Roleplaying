@@ -10,6 +10,7 @@ public class Character {
 	Dictionary<String, List[]> attackSkills;
 	int energy;
 	Armor armor;
+	Weapon weapon;
 	// armor adds health points to the character for now
 	Object debuff;
 	Object buff;

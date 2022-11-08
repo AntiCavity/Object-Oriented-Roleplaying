@@ -1,9 +1,7 @@
 
 public class Weapon extends Item{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	int damage = 0; //How much damage the Weapon Object does
+	float critChance = 0; //TODO 
 
 }

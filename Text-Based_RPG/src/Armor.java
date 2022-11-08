@@ -1,9 +1,7 @@
 
 public class Armor extends Item {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	int damageProtection; //adds aditional health to character healthpoints
+	int[] armorResistance;	//int array {poisonResistance, bleedResistance, magicResistance}
 
 }
