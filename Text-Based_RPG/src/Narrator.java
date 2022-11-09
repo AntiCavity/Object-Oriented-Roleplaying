@@ -20,24 +20,28 @@ public class Narrator {
 			+ "/**   //**/**       //********                                           \r\n"
 			+ "//     // //         ////////    ";
 	
+	static Scanner narrator = new Scanner(System.in);
+	static Character character = new Character();
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO
 		launch();
-		
 	}
 
 	public static void launch() {	//launches game and waits for input for user: '/p' to play; '/q' to quit.
 		System.out.print(title);
 		System.out.println("Enter /p to play or /q to quit");
 		
-		Scanner narrator = new Scanner(System.in);
+		//Scanner narrator = new Scanner(System.in);
 		
 		String input = narrator.nextLine();		
 		// if user enters /p: goes into the infinite while loop 
-		if (input == "/p") {
+		if (input.equals("/p")) {
 			// starts character creation
+			playDemo();	// Starts Demo
 			System.out.println("Please select a class to start your adventure! /n -Rogue /n -Archer /n -Warrior /n "
 					+ "-Knight /n -Wizard /n -Bastard /n");
+			
 			// inputs name
 			// inputs class
 			// narrative print statements
@@ -53,6 +57,25 @@ public class Narrator {
 			narrator.close();
 			// quit program
 		}
+		
+	}
+	
+	public static void playDemo() { // Starts Demo
+		//String input = narrator.nextLine();
+		System.out.println("Narrator: Welcome to the demo of our Fantasy RPG!");
+		System.out.println("Narrator: Please select a class to start your adventure! \n -Rogue <- Only one available for demo \n -Archer \n -Warrior \n"
+				+ " -Knight \n -Wizard \n -Bastard \n");
+		String input = narrator.nextLine();
+		if (input.equals("/q")) {
+			System.out.println("OK See Ya!");
+			narrator.close();
+		}
+		if (input.equals("Rogue")||input.equals("r")) {
+			character.chooseCharClass(input);
+		}
+		//Tests
+		System.out.println(character.CharClass);
+		System.out.println(character.weapon);
 		
 	}
 	

@@ -1,9 +1,10 @@
+import java.util.Scanner;
 
 public class CombatTurnManager {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	Scanner combatCommand = new Scanner(System.in);
+	
+	//COMBAT:
+		
 
 }

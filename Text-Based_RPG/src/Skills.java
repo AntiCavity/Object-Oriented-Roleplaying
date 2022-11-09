@@ -9,6 +9,23 @@ public class Skills {
 	int energyCost;
 	int heal; 
 	
-	
-
+	/*
+	public class Skills {
+		
+		String name;
+		
+		int damage;
+		
+		object debuff;
+		
+		object buff;
+		
+		int energyCost;
+		
+		int heal;
+		
+		
+		skillConstructor(attributes)
+		
+	*/
 }

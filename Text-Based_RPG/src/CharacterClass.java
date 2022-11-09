@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CharacterClass {
 	Inventory inventory;
-	Character character = new Character();
+	Character character;
 	// we might need to make something with the skills like their own type for example or even another class
 	// Dictionary<String, List[]> attackSkills;
 

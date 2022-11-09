@@ -1,14 +1,1 @@
-/Armor.class
-/Bag.class
-/Character.class
-/CharacterClass.class
-/CombatTurnManager.class
-/Companion.class
-/Inventory.class
-/Item.class
-/Narrator.class
-/PC.class
-/Potion.class
-/SimpleMob.class
-/Weapon.class
-/Skills.class
+/SimpleMobGenerator.class

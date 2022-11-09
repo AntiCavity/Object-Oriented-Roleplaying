@@ -16,42 +16,26 @@ public class Character {
 	Object buff;
 	String CharClass;
 	
-	public void attack(Object target, Object attackSkill) {
-		//TODO
-		
-		// apply damage, debuff, buff or whatever stats is in attackSkill
-	}
+//	public void attack(Object target, Object attackSkill) {
+//		//TODO
+//		
+//		// apply damage, debuff, buff or whatever stats is in attackSkill
+//	}
+	
+	public int attack(Skills attackSkill) {	// returns int for combatManager class.
+	//TODO
+		return weapon.damage + attackSkill.damage;
+	// apply damage, debuff, buff or whatever stats is in attackSkill
+}
 	
 	public void chooseCharClass(String charClass) {
-		//TODO
+		CharacterClass cc = new CharacterClass();
+		cc.chooseClass(charClass);
 	}
 	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }
 
-/*
-public class Skills {
-	
-	String name;
-	
-	int damage;
-	
-	object debuff;
-	
-	object buff;
-	
-	int energyCost;
-	
-	int heal;
-	
-	
-	skillConstructor(attributes)
-	
-*/
+
 
 	
