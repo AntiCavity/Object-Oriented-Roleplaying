@@ -69,6 +69,7 @@ public class Character {
 		// if != then returns an error message and prompts the user in narrator to reselect their class
 		if (s == "Rogue" || s == "rogue" || s == "r") {
 			rogueClassSetUp();
+			
 		}
 	}
 	public void addArmor(Armor armor, int quantity) {
@@ -115,6 +116,8 @@ public class Character {
 						rogueArmor.armorResistance = resistance;
 					addArmor(rogueArmor,1);
 					
+					System.out.println("Finished Armor");
+					
 					Weapon roguesDagger = new Weapon();
 						roguesDagger.name = rogueWeaponInfo[0];
 						roguesDagger.itemDescription = rogueWeaponInfo[1];
@@ -122,12 +125,16 @@ public class Character {
 						roguesDagger.critChance = 0; //TODO
 					addWeapon(roguesDagger, 1);
 					
+					System.out.println("Finished Weapon");
+					
 					addHealPotion(2);
 					addManaPotion(2);
 
 					this.healthPoints = 75;
 					this.mana = 30;
 					this.CharClass = "Rogue";
+					
+					System.out.println("Finished Assignments");
 					
 					// create rogue attack skills // 
 					Skills backStab = new Skills();	// Special Skill //
@@ -149,6 +156,10 @@ public class Character {
 					this.attackSkills = rogueSkillSet;
 					// Need more skill IDEAS!
 						//TODO
+	}
+	
+	public String getCharClass() {
+		return this.CharClass;
 	}
 	
 

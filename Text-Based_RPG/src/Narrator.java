@@ -21,7 +21,6 @@ public class Narrator {
 			+ "//     // //         ////////    ";
 	
 	static Scanner narrator = new Scanner(System.in);
-	static Character character = new Character();
 	
 	public static void main(String[] args) {
 		// TODO
@@ -65,6 +64,8 @@ public class Narrator {
 		
 		// We should maybe sleep everytime we print a line because I believe it will just spam print all of these lines
 		
+		Character character = new Character();
+		
 		System.out.println("Narrator: Welcome to the demo of our Fantasy RPG!");
 		
 		System.out.println("Adventurer: You there!");
@@ -75,7 +76,7 @@ public class Narrator {
 		
 		character.name = name;
 		
-		System.out.println("Adventurer: " + character.name + "was it?");
+		System.out.println("Adventurer: " + character.name + " was it?");
 		
 		System.out.println("Adventurer: Now that is an excellent name which befits a true warrior such as yourself.");
 		
@@ -84,12 +85,11 @@ public class Narrator {
 		System.out.println("Narrator: Please select a class to start your adventure! \n -Rogue <- Only one available for demo \n -Archer \n -Warrior \n"
 				+ " -Knight \n -Wizard \n -Bastard \n");
 		String input = narrator.nextLine();
-		System.out.println(input);
 		if (input.equals("/q")) {
 			System.out.println("OK See Ya!");
 			narrator.close();
 		}
-		if (input.equals("Rogue")||input.equals("r")) {
+		if (input.equals("Rogue") || input.equals("r")) {
 			character.chooseClass(input);
 			System.out.println("Adventurer: Ah you are a " + character.CharClass + "\n Adventurer: You must be nimble on your feet!");
 		}
