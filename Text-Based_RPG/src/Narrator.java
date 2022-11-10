@@ -21,6 +21,7 @@ public class Narrator {
 			+ "//     // //         ////////    ";
 	
 	static Scanner narrator = new Scanner(System.in);
+	static Character character = new Character();
 	
 	public static void main(String[] args) {
 		// TODO
@@ -63,8 +64,6 @@ public class Narrator {
 		
 		// We should maybe sleep everytime we print a line because I believe it will just spam print all of these lines
 		
-		Character character = new Character();
-		
 		System.out.println("Narrator: Welcome to the demo of our Fantasy RPG!");
 		System.out.println("Adventurer: You there!");
 		System.out.println("Adventurer: What is your name?");
@@ -75,8 +74,6 @@ public class Narrator {
 		System.out.println("Adventurer: " + character.name + " was it?");		
 		System.out.println("Adventurer: Now that is an excellent name which befits a true warrior such as yourself.");
 		System.out.println("Adventurer: Now what type of warrior are you, " + character.name + "?");
-//		System.out.println("Narrator: Please select a class to start your adventure! \n -Rogue <- Only one available for demo \n -Archer \n -Warrior \n"
-//				+ " -Knight \n -Wizard \n -Bastard \n");
 		
 		String input = narrator.nextLine();
 		if (input.equals("/q")) {
@@ -86,13 +83,18 @@ public class Narrator {
 		if (input.equals("Rogue") || input.equals("r")) {
 			character = character.chooseClass(input);
 
-			System.out.println("Adventurer: Ah you are a " + character.CharClass + "\nAdventurer: You must be nimble on your feet!");
+			System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be nimble on your feet!");
 		}
 		//Tests
 		System.out.println(character.CharClass);
 		System.out.println(character.weapon.name);
-		System.out.println(character.inventory.displayInventory());
-		
+		character.inventory.displayInventory();
+		System.out.println(help());
+	}
+	
+	public static String help() {
+		String help = "Commands you can type:\n\t a: Attack\n\t i: Inventory\n\t in: Inspect\n\t f: Flee\n";
+		return help;
 	}
 	
 }

@@ -118,7 +118,8 @@ public class Character {
 						rogueArmor.armorResistance = resistance;
 					addArmor(rogueArmor,1);
 					
-					System.out.println("Finished Armor");
+					//Test statement
+					//System.out.println("Finished Armor");
 					
 					Weapon roguesDagger = new Weapon();
 						roguesDagger.name = rogueWeaponInfo[0];
@@ -136,7 +137,8 @@ public class Character {
 					this.mana = 30;
 					this.CharClass = "Rogue";
 					
-					System.out.println("Finished Assignments");
+					//Test statement
+					//System.out.println("Finished Assignments");
 					
 					// create rogue attack skills // 
 					Skills backStab = new Skills();	// Special Skill //

@@ -33,10 +33,12 @@ public class Inventory {
 	}
 	
 	public boolean displayInventory() { // displays inventory to screen
-		//TODO
-		System.out.println("*** Inventory ***");
-		System.out.println(inventory);
-		System.out.println("*****************");
+		// Displays Player Inventory ??
+		Iterator inventoryIterator = inventory.entrySet().iterator();
+		
+		System.out.println("\t*** Inventory ***");
+		inventory.forEach((item,quantity) -> System.out.println("\t" + item.name + " : " + quantity));
+		System.out.println("\t*****************");
 		// we should also display equiped items here once we decide if we are doing that here or in the character class
 		return true;
 	}

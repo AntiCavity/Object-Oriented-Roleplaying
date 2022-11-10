@@ -6,5 +6,9 @@ public class CombatTurnManager {
 	
 	//COMBAT:
 		
-
+	public void startCombatEncounter(Character player, SimpleMob mob) {
+		while (mob.healthPoints > 0) {
+			//TODO
+		}
+	}
 }
