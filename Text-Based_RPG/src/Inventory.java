@@ -38,6 +38,7 @@ public class Inventory {
 		System.out.println("*** Inventory ***");
 		System.out.println(inventory);
 		System.out.println("*****************");
+		// we should also display equiped items here once we decide if we are doing that here or in the character class
 	}
 	
 	public void equipArmor(Armor armor) {

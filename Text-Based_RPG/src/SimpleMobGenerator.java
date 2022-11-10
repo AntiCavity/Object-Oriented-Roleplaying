@@ -1,5 +1,7 @@
 import java.lang.Math;
 public class SimpleMobGenerator {
+	
+	// we have to make sure that all these arrays are always the same length, this could be a unit test we implement later
 
 	String[] simpleMobs = {"Skeleton Knight", "Cave Spider", "Giant Wasp", "Undead", "Bandit"};
 	int[] simpleMobHealth = {50, 40, 35, 25, 35};
@@ -10,7 +12,7 @@ public class SimpleMobGenerator {
 	
 	public SimpleMob createRandomEncounter() {
 		// This function should take a random mob and create an Object of said mob for the player to encounter
-		int randIndex = (int)(Math.random() * 5);
+		int randIndex = (int)(Math.random() * simpleMobs.length);
 		SimpleMob mob = new SimpleMob(); // instantiates mob Object, and sets attributes
 			mob.name = simpleMobs[randIndex];
 			mob.description = simpleMobDescription[randIndex];

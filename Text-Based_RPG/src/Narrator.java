@@ -62,7 +62,25 @@ public class Narrator {
 	
 	public static void playDemo() { // Starts Demo
 		//String input = narrator.nextLine();
+		
+		// We should maybe sleep everytime we print a line because I believe it will just spam print all of these lines
+		
 		System.out.println("Narrator: Welcome to the demo of our Fantasy RPG!");
+		
+		System.out.println("Adventurer: You there!");
+		
+		System.out.println("Adventurer: What is your name?");
+		
+		String name = narrator.nextLine();
+		
+		character.name = name;
+		
+		System.out.println("Adventurer: " + character.name + "was it?");
+		
+		System.out.println("Adventurer: Now that is an excellent name which befits a true warrior such as yourself.");
+		
+		System.out.println("Adventurer: Now what type of warrior are you, " + character.name + "?");
+		
 		System.out.println("Narrator: Please select a class to start your adventure! \n -Rogue <- Only one available for demo \n -Archer \n -Warrior \n"
 				+ " -Knight \n -Wizard \n -Bastard \n");
 		String input = narrator.nextLine();

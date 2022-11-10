@@ -9,23 +9,15 @@ public class Skills {
 	int energyCost;
 	int heal; 
 	
+	
+	// we might not need this constructor 
 	/*
-	public class Skills {
-		
-		String name;
-		
-		int damage;
-		
-		object debuff;
-		
-		object buff;
-		
-		int energyCost;
-		
-		int heal;
-		
-		
-		skillConstructor(attributes)
-		
+	public Skills(String name, String skillDescription, int damage, int energyCost, int heal) {
+		this.name = name;
+		this.skillDescription = skillDescription;
+		this.damage = damage;
+		this.energyCost = energyCost;
+		this.heal = heal; 
+	}
 	*/
 }

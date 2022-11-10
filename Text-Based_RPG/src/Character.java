@@ -4,6 +4,10 @@ import java.util.*;
 
 public class Character {
 
+	// I think we should merge CharacterClass and Character
+	
+	// Should we store equiped armor inside the Character or the Inventory??
+	
 	String name;
 	int healthPoints;
 	//int level; // removing for now...
