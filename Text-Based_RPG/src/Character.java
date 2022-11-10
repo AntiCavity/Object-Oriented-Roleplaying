@@ -64,13 +64,14 @@ public class Character {
 		//TODO
 	
 	
-	public void chooseClass(String s) {
-		// if string is == to one of the classes, makes the character into said class and assigns the right items
-		// if != then returns an error message and prompts the user in narrator to reselect their class
-		if (s == "Rogue" || s == "rogue" || s == "r") {
-			rogueClassSetUp();
-			
+	public Character chooseClass(String s) {
+		if (s.equals("Rogue") || s.equals("rogue") || s.equals("r")) {
+			Character rogueCharacter = new Character();
+			rogueCharacter.rogueClassSetUp();	
+			return rogueCharacter;
 		}
+		System.out.println("should not be here!");
+		return null;
 	}
 	public void addArmor(Armor armor, int quantity) {
 		inventory.addItem(armor, quantity);
@@ -90,7 +91,7 @@ public class Character {
 			healthPotion.itemDescription = info;
 			healthPotion.healPoints = 15;
 		
-		inventory.addItem(healthPotion, quantity);	//adds item to player inventory
+		this.inventory.addItem(healthPotion, quantity);	//adds item to player inventory
 		
 	}
 	public void addManaPotion(int quantity) {
@@ -102,12 +103,13 @@ public class Character {
 			manaPotion.name = name;
 			manaPotion.itemDescription = info;
 			
-		inventory.addItem(manaPotion, quantity);
+		this.inventory.addItem(manaPotion, quantity);
 	}
 
 	public void rogueClassSetUp() {
 		// add a dagger to the characters bag and equip
 					// add thieves guild armor to characters bag and equip
+					createNewInventory();
 					Armor rogueArmor = new Armor();
 						rogueArmor.name = rogueArmorInfo[0];
 						rogueArmor.itemDescription = rogueArmorInfo[1];
@@ -127,8 +129,8 @@ public class Character {
 					
 					System.out.println("Finished Weapon");
 					
-					addHealPotion(2);
-					addManaPotion(2);
+					this.addHealPotion(2);
+					this.addManaPotion(2);
 
 					this.healthPoints = 75;
 					this.mana = 30;
@@ -158,10 +160,9 @@ public class Character {
 						//TODO
 	}
 	
-	public String getCharClass() {
-		return this.CharClass;
+	public void createNewInventory() {
+		this.inventory = new Inventory();
 	}
-	
 
 }
 

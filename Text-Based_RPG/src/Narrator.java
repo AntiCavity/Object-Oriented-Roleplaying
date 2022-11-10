@@ -38,9 +38,8 @@ public class Narrator {
 		if (input.equals("/p")) {
 			// starts character creation
 			playDemo();	// Starts Demo
-			System.out.println("Please select a class to start your adventure! /n -Rogue /n -Archer /n -Warrior /n "
-					+ "-Knight /n -Wizard /n -Bastard /n");
-			
+			System.out.println("Thank you for playing the demo!"); // End Message
+			narrator.close();
 			// inputs name
 			// inputs class
 			// narrative print statements
@@ -67,35 +66,32 @@ public class Narrator {
 		Character character = new Character();
 		
 		System.out.println("Narrator: Welcome to the demo of our Fantasy RPG!");
-		
 		System.out.println("Adventurer: You there!");
-		
 		System.out.println("Adventurer: What is your name?");
 		
 		String name = narrator.nextLine();
-		
 		character.name = name;
-		
-		System.out.println("Adventurer: " + character.name + " was it?");
-		
+
+		System.out.println("Adventurer: " + character.name + " was it?");		
 		System.out.println("Adventurer: Now that is an excellent name which befits a true warrior such as yourself.");
-		
 		System.out.println("Adventurer: Now what type of warrior are you, " + character.name + "?");
+//		System.out.println("Narrator: Please select a class to start your adventure! \n -Rogue <- Only one available for demo \n -Archer \n -Warrior \n"
+//				+ " -Knight \n -Wizard \n -Bastard \n");
 		
-		System.out.println("Narrator: Please select a class to start your adventure! \n -Rogue <- Only one available for demo \n -Archer \n -Warrior \n"
-				+ " -Knight \n -Wizard \n -Bastard \n");
 		String input = narrator.nextLine();
 		if (input.equals("/q")) {
 			System.out.println("OK See Ya!");
 			narrator.close();
 		}
 		if (input.equals("Rogue") || input.equals("r")) {
-			character.chooseClass(input);
-			System.out.println("Adventurer: Ah you are a " + character.CharClass + "\n Adventurer: You must be nimble on your feet!");
+			character = character.chooseClass(input);
+
+			System.out.println("Adventurer: Ah you are a " + character.CharClass + "\nAdventurer: You must be nimble on your feet!");
 		}
 		//Tests
 		System.out.println(character.CharClass);
-		System.out.println(character.weapon);
+		System.out.println(character.weapon.name);
+		System.out.println(character.inventory.displayInventory());
 		
 	}
 	

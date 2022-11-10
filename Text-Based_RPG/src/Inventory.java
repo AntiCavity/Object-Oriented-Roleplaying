@@ -1,22 +1,20 @@
-import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.HashMap;
 import java.util.*;
 
 public class Inventory {
 	
-	HashMap<Item, Integer> inventory;	//Key = Item; Value = quantity of Item
+	HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();	//Key = Item; Value = quantity of Item
 		// Note for Blake; Hashmaps do not allow for duplicate keys
 	
 	public void addItem(Item item, int quantity){
-		if (inventory.containsKey(item)) {	// if item exists in inventory, adds to quantity of item in inventory
-			int oldQuantity = inventory.get(item);
-			int newQuantity = oldQuantity + quantity;
-			inventory.replace(item, oldQuantity, newQuantity);
-		}
-		else {	// adds new item to inventory
-			inventory.put(item, quantity);
-		}
+			if (inventory.containsKey(item)) {	// if item exists in inventory, adds to quantity of item in inventory
+				int oldQuantity = inventory.get(item);
+				int newQuantity = oldQuantity + quantity;
+				inventory.replace(item, oldQuantity, newQuantity);
+			}
+			else {
+				inventory.put(item, quantity);
+			}
 	}
 	
 	public void useItem(Item item) {
@@ -34,11 +32,13 @@ public class Inventory {
 		}
 	}
 	
-	public void displayInventory() { // displays inventory to screen
+	public boolean displayInventory() { // displays inventory to screen
+		//TODO
 		System.out.println("*** Inventory ***");
 		System.out.println(inventory);
 		System.out.println("*****************");
 		// we should also display equiped items here once we decide if we are doing that here or in the character class
+		return true;
 	}
 	
 	public void equipArmor(Armor armor) {
