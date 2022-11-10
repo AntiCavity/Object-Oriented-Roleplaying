@@ -84,12 +84,14 @@ public class Narrator {
 		System.out.println("Narrator: Please select a class to start your adventure! \n -Rogue <- Only one available for demo \n -Archer \n -Warrior \n"
 				+ " -Knight \n -Wizard \n -Bastard \n");
 		String input = narrator.nextLine();
+		System.out.println(input);
 		if (input.equals("/q")) {
 			System.out.println("OK See Ya!");
 			narrator.close();
 		}
 		if (input.equals("Rogue")||input.equals("r")) {
-			character.chooseCharClass(input);
+			character.chooseClass(input);
+			System.out.println("Adventurer: Ah you are a " + character.CharClass + "\n Adventurer: You must be nimble on your feet!");
 		}
 		//Tests
 		System.out.println(character.CharClass);

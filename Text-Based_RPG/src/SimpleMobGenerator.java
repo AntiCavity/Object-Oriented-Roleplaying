@@ -13,11 +13,7 @@ public class SimpleMobGenerator {
 	public SimpleMob createRandomEncounter() {
 		// This function should take a random mob and create an Object of said mob for the player to encounter
 		int randIndex = (int)(Math.random() * simpleMobs.length);
-		SimpleMob mob = new SimpleMob(); // instantiates mob Object, and sets attributes
-			mob.name = simpleMobs[randIndex];
-			mob.description = simpleMobDescription[randIndex];
-			mob.baseDamage = simpleMobDamage[randIndex];
-			mob.healthPoints = simpleMobHealth[randIndex];
+		SimpleMob mob = new SimpleMob(simpleMobs[randIndex],simpleMobDescription[randIndex],simpleMobDamage[randIndex], simpleMobHealth[randIndex]); // instantiates mob Object, and sets attributes
 		return mob;
 	}
 	
