@@ -32,17 +32,14 @@ public class CombatTurnManager {
 				+ "\t You draw your " + player.weapon.name + " and prepare for a battle!");
 		System.out.println("TIP: To find out what commands you can input, type 'help' in the command line");
 		
-		while (mob.healthPoints > 0) {
-			String input = combatCommand.nextLine();
-			if (player.healthPoints < 1) {
-				System.out.println("Narrator: You took a fatal hit from " + mob.name + ". Your bady is left for the "
-						+ "vultures...");
-				System.out.println("GAME OVER");
-				combatCommand.close();
-				break;
-			}
+		while (mob.healthPoints > 0 && player.healthPoints > 0) {
+			
+			System.out.println("\nYour HP: " + player.healthPoints + "\t" + mob.name + " HP: " + mob.healthPoints + "\n");
 			
 			System.out.println("Narrator: What do you want to do?");
+			
+			String input = combatCommand.nextLine();
+			
 			
 			if (!commandSet.contains(input)) {
 				System.out.println("That's an invalid command! To find out what commands you can input, type 'help' in the command line");
@@ -53,7 +50,17 @@ public class CombatTurnManager {
 			else if (input.equals("f")) {fleeCommand();}
 			else if (input.equals("help")) {helpCommand();}
 		}
+		if (player.healthPoints <= 0) {
+			System.out.println("Narrator: You took a fatal hit from " + mob.name + ". Your bady is left for the "
+					+ "vultures...");
+			System.out.println("GAME OVER");
+			combatCommand.close();
+		}
 		
+		else if (mob.healthPoints <= 0) {
+			System.out.println("You have slain the " + mob.name);
+			combatCommand.close();
+		}
 	}
 	
 	public void attackCommand() {
@@ -61,12 +68,12 @@ public class CombatTurnManager {
 		int playerDmg = 0;	// total damage player deals
 		boolean stop = false;
 		String attackDescription = null;
-		
 		while (stop == false) {
-		Iterator<Skills> skills = playerSkills.iterator();
+			boolean errCounter = true;
+			Iterator<Skills> skills = playerSkills.iterator();
 			while(skills.hasNext()) {	// Prints out skills available for player to use
 				Skills skill = skills.next();
-				System.out.println(skill.name);
+				System.out.println("\n" + skill.name);
 				System.out.println("\t Damage: " + skill.damage);
 				System.out.println("\t Mana Cost: " + skill.energyCost);
 				//availableSkills.add(skill);
@@ -81,7 +88,11 @@ public class CombatTurnManager {
 				Skills skill2 = skills2.next();
 				if (input.equals(skill2.name)) {playerDmg = (skill2.damage) + (player.weapon.damage); 
 												stop = true;
+												errCounter = false;
 												attackDescription = skill2.skillDescription;}
+			}
+			if (errCounter == true) {
+				System.out.println("Invalid Skill.\nPlease check your spelling.");
 			}
 		}	
 		mob.healthPoints -= playerDmg;
@@ -89,8 +100,8 @@ public class CombatTurnManager {
 		
 		System.out.println(attackDescription);
 		System.out.println("Narrator: You dealt: " + playerDmg + " damage!");
-		System.out.println("The " + mob.name + " lunged at you!");
-		System.out.println("Narrator: You received: " + mob.baseDamage + " damage.");
+		System.out.println("\nThe " + mob.name + " lunged at you!\n");
+		System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
 		
 	}
 	
@@ -107,15 +118,15 @@ public class CombatTurnManager {
 	}
 	
 	public boolean fleeCommand() {
-		System.out.println("Adventurer: YOU COWARD! DO NOT RUN AWAY! I DON'T TO DIE!");
+		System.out.println("Adventurer: YOU COWARD! DO NOT RUN AWAY! I DON'T WANT TO DIE!");
 		player.healthPoints -= mob.baseDamage;
-		System.out.println("The " + mob.name + " lunged at you!");
-		System.out.println("Narrator: You received: " + mob.baseDamage + " damage.");
+		System.out.println("\nThe " + mob.name + " lunged at you!\n");
+		System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
 		return true;
 	}
 	
 	public boolean helpCommand() {
-		String help = "Commands you can type:\n\t a: Attack\n\t i: Inventory\n\t in: Inspect\n\t f: Flee\n";
+		System.out.println("Commands you can type:\n\t a: Attack\n\t i: Inventory\n\t in: Inspect\n\t f: Flee\n");
 		return true;
 	}
 		

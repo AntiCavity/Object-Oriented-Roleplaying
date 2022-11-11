@@ -128,7 +128,7 @@ public class Character {
 						roguesDagger.critChance = 0; //TODO
 					addWeapon(roguesDagger, 1);
 					
-					System.out.println("Finished Weapon");
+					//System.out.println("Finished Weapon");
 					
 					this.addHealPotion(2);
 					this.addManaPotion(2);

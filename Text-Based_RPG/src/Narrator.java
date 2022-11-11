@@ -30,7 +30,7 @@ public class Narrator {
 	}
 
 	public static void launch() {	//launches game and waits for input for user: '/p' to play; '/q' to quit.
-		System.out.print(title);
+		System.out.println(title);
 		System.out.println("Enter /p to play or /q to quit");
 		
 		//Scanner narrator = new Scanner(System.in);
@@ -75,16 +75,27 @@ public class Narrator {
 		System.out.println("Adventurer: " + character.name + " was it?");		
 		System.out.println("Adventurer: Now that is an excellent name which befits a true warrior such as yourself.");
 		System.out.println("Adventurer: Now what type of warrior are you, " + character.name + "?");
+		System.out.println("Narrator: Your class choices are: \nRogue(this is the only one in the demo)"
+				+ "\nWarrior \nArcher \nKnight \nWizard \nBastard");
 		
-		String input = narrator.nextLine();
-		if (input.equals("/q")) {
-			System.out.println("OK See Ya!");
-			narrator.close();
-		}
-		if (input.equals("Rogue") || input.equals("r")) {
-			character = character.chooseClass(input);
+		while (true) {	
+			String input = narrator.nextLine();
+			if (input.equals("/q")) {
+				System.out.println("OK See Ya!");
+				narrator.close();
+				break;
+			}
+			if (input.equals("Rogue") || input.equals("r")) {
+				character = character.chooseClass(input);
 
-			System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be nimble on your feet!");
+				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be nimble on your feet!");
+				break;
+			}
+		
+			else {
+				System.out.println("That is not a valid class");
+			
+			}
 		}
 		//Tests
 //		System.out.println(character.CharClass);
