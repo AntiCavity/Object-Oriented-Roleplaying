@@ -1,4 +1,5 @@
 import java.lang.Math;
+
 public class SimpleMobGenerator {
 	
 	// we have to make sure that all these arrays are always the same length, this could be a unit test we implement later

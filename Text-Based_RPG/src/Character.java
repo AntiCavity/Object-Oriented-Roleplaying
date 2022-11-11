@@ -1,6 +1,6 @@
-import java.util.Dictionary;
-import java.util.Hashtable;
+
 import java.util.*;
+import java.io.*;
 
 public class Character {
 
@@ -11,7 +11,7 @@ public class Character {
 	String name;
 	int healthPoints;
 	//int level; // removing for now...
-	Skills[] attackSkills; // Skills list
+	HashSet<Skills> attackSkills; // Skills list
 	int mana;
 	Armor armor;
 	Weapon weapon;
@@ -151,12 +151,15 @@ public class Character {
 						
 					Skills slash = new Skills(); // Standard Skill //
 						slash.name = "Slash";
-						String sD = String.format("You use your %s to attack the enemy!", this.weapon);
+						String sD = String.format("You use your %s to attack the enemy!", this.weapon.name);
 						slash.skillDescription = sD;
 						slash.damage = this.weapon.damage;	// uses player weapon damage //
 						slash.energyCost = 0;
 					
-					Skills[] rogueSkillSet = {slash, backStab};
+					HashSet<Skills> rogueSkillSet = new HashSet<>();//{slash, backStab};
+						rogueSkillSet.add(slash);
+						rogueSkillSet.add(backStab);
+						
 					this.attackSkills = rogueSkillSet;
 					// Need more skill IDEAS!
 						//TODO

@@ -106,7 +106,7 @@ public class CharacterClass {
 						slash.energyCost = 0;
 					
 					Skills[] rogueSkillSet = {slash, backStab};
-					character.attackSkills = rogueSkillSet;
+//					character.attackSkills = rogueSkillSet;
 					// Need more skill IDEAS!
 						//TODO
 	}

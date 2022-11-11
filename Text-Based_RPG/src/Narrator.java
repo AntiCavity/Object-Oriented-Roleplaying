@@ -22,6 +22,7 @@ public class Narrator {
 	
 	static Scanner narrator = new Scanner(System.in);
 	static Character character = new Character();
+	static CombatTurnManager ctm = new CombatTurnManager();
 	
 	public static void main(String[] args) {
 		// TODO
@@ -86,10 +87,11 @@ public class Narrator {
 			System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be nimble on your feet!");
 		}
 		//Tests
-		System.out.println(character.CharClass);
-		System.out.println(character.weapon.name);
-		character.inventory.displayInventory();
-		System.out.println(help());
+//		System.out.println(character.CharClass);
+//		System.out.println(character.weapon.name);
+//		character.inventory.displayInventory();
+//		System.out.println(help());
+		ctm.startCombatEncounter(character);
 	}
 	
 	public static String help() {
