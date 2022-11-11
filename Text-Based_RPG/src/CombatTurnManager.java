@@ -65,6 +65,7 @@ public class CombatTurnManager {
 	
 	public void attackCommand() {
 		//Scanner attackCommand = new Scanner(System.in);
+		//TODO Still need to add logic to manage mana usage for final product.
 		int playerDmg = 0;	// total damage player deals
 		boolean stop = false;
 		String attackDescription = null;
