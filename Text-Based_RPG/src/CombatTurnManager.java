@@ -107,7 +107,7 @@ public class CombatTurnManager {
 	
 	public void inventoryCommand() {
 		player.inventory.displayInventory();
-		String input = combatCommand.nextLine();
+		System.out.println("\nUsing items is not available in the demo\n");
 		
 	}
 	
