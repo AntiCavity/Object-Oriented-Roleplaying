@@ -7,7 +7,7 @@ public class Skills {
 	Object debuff;
 	Object buff;
 	int energyCost;
-	int heal; 
+	int heal; //TODO Need to implement to heal character
 	
 	
 	// we might not need this constructor 

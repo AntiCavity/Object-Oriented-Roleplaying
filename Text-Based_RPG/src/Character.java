@@ -144,7 +144,7 @@ public class Character {
 					Skills backStab = new Skills();	// Special Skill //
 						backStab.name = "Back Stab";
 						backStab.skillDescription = "You swiftly sidestep the opponent landing a sharp blow to the opponent's back"
-								+ "stealing some lifeforce in the process.";
+								+ " stealing some lifeforce in the process.";
 						backStab.damage = 20;
 						backStab.energyCost = 5; // Should subract from character.mana
 						backStab.heal = 3; // Small amount of health is restored and subtract from mob.health

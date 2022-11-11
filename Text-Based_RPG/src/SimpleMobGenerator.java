@@ -7,8 +7,8 @@ public class SimpleMobGenerator {
 	String[] simpleMobs = {"Skeleton Knight", "Cave Spider", "Giant Wasp", "Undead", "Bandit"};
 	int[] simpleMobHealth = {50, 40, 35, 25, 35};
 	int[] simpleMobDamage = {10, 10, 20, 5, 20};
-	String[] simpleMobDescription = {"A knight from a Kingdom lost in time", "A giant hairy cave spider that wants you as it's next meal",
-			"A giant wasp that nests in the forests to the north.", "Someone who was cursed to wake up from their eternal sleep to serve the "
+	String[] simpleMobDescription = {"A skeleton who wears the armor from a Kingdom lost to time...", "A giant hairy cave spider that wants you as it's next meal!",
+			"A giant wasp that flaps it's wings so fierce it almost knocks you of your feet!", "Someone who was cursed to wake up from their eternal slumber to serve the "
 					+ "evil necromancer.", "A bandit hellbent on taking your coin no matter the cost!"};
 	
 	public SimpleMob createRandomEncounter() {

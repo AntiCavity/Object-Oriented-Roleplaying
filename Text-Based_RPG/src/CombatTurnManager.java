@@ -95,14 +95,18 @@ public class CombatTurnManager {
 				System.out.println("Invalid Skill.\nPlease check your spelling.");
 			}
 		}	
-		mob.healthPoints -= playerDmg;
+		
 		player.healthPoints -= mob.baseDamage;
 		
 		System.out.println(attackDescription);
 		System.out.println("Narrator: You dealt: " + playerDmg + " damage!");
-		System.out.println("\nThe " + mob.name + " lunged at you!\n");
-		System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
+		mob.healthPoints -= playerDmg;
 		
+		if (mob.healthPoints > 0) {
+			System.out.println("\nThe " + mob.name + " lunged at you!\n");
+			System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
+			player.healthPoints -= mob.baseDamage;
+		}
 	}
 	
 	public void inventoryCommand() {
