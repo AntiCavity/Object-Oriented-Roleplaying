@@ -51,9 +51,10 @@ public class CombatTurnManager {
 			else if (input.equals("help")) {helpCommand();}
 		}
 		if (player.healthPoints <= 0) {
-			System.out.println("Narrator: You took a fatal hit from " + mob.name + ". Your bady is left for the "
+			System.out.println("Narrator: You took a fatal hit from " + mob.name + ". Your body is left for the "
 					+ "vultures...");
-			System.out.println("GAME OVER");
+//			System.out.println("GAME OVER");
+			gameOver();
 			combatCommand.close();
 		}
 		
@@ -97,8 +98,6 @@ public class CombatTurnManager {
 			}
 		}	
 		
-		player.healthPoints -= mob.baseDamage;
-		
 		System.out.println(attackDescription);
 		System.out.println("Narrator: You dealt: " + playerDmg + " damage!");
 		mob.healthPoints -= playerDmg;
@@ -132,6 +131,17 @@ public class CombatTurnManager {
 	
 	public boolean helpCommand() {
 		System.out.println("Commands you can type:\n\t a: Attack\n\t i: Inventory\n\t in: Inspect\n\t f: Flee\n");
+		return true;
+	}
+	
+	public boolean gameOver() {
+		System.out.println(" ::::::::      :::     ::::    ::::  ::::::::::  ::::::::  :::     ::: :::::::::: :::::::::  \r\n"
+				+ ":+:    :+:   :+: :+:   +:+:+: :+:+:+ :+:        :+:    :+: :+:     :+: :+:        :+:    :+: \r\n"
+				+ "+:+         +:+   +:+  +:+ +:+:+ +:+ +:+        +:+    +:+ +:+     +:+ +:+        +:+    +:+ \r\n"
+				+ ":#:        +#++:++#++: +#+  +:+  +#+ +#++:++#   +#+    +:+ +#+     +:+ +#++:++#   +#++:++#:  \r\n"
+				+ "+#+   +#+# +#+     +#+ +#+       +#+ +#+        +#+    +#+  +#+   +#+  +#+        +#+    +#+ \r\n"
+				+ "#+#    #+# #+#     #+# #+#       #+# #+#        #+#    #+#   #+#+#+#   #+#        #+#    #+# \r\n"
+				+ " ########  ###     ### ###       ### ##########  ########      ###     ########## ###    ###");
 		return true;
 	}
 		
