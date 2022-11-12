@@ -1,3 +1,4 @@
+package game;
 
 public class Bag {
 	//Loot bag class
