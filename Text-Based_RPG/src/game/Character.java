@@ -61,15 +61,7 @@ public class Character {
 		return weapon.damage + attackSkill.damage;
 	// apply damage, debuff, buff or whatever stats is in attackSkill
 }
-	
-	/*
-	
-	public void chooseCharClass(String charClass) {
-		CharacterClass cc = new CharacterClass();
-		cc.chooseClass(charClass);
-	}
-	
-	*/
+
 	
 	// Add other class Armor and Weapons here
 		//TODO
@@ -81,7 +73,11 @@ public class Character {
 			rogueCharacter.rogueClassSetUp();	
 			return rogueCharacter;
 		}
-		System.out.println("should not be here!");
+		else if (s.equals("Warrior") || s.equals("warrior") || s.equals("w")) {
+			Character warriorCharacter = new Character();
+			warriorCharacter.warriorClassSetUp();	
+			return warriorCharacter;
+		}
 		return null;
 	}
 	public void addArmor(Armor armor, int quantity) {

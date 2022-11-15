@@ -8,17 +8,18 @@ public class Inventory {
 		// Note for Blake; Hashmaps do not allow for duplicate keys
 	
 	public void addItem(Item item, int quantity){
-			if (inventory.containsKey(item)) {	// if item exists in inventory, adds to quantity of item in inventory
-				int oldQuantity = inventory.get(item);
-				int newQuantity = oldQuantity + quantity;
-				inventory.replace(item, oldQuantity, newQuantity);
-			}
-			else {
-				inventory.put(item, quantity);
-			}
+		if (inventory.containsKey(item)) {	// if item exists in inventory, adds to quantity of item in inventory
+			int oldQuantity = inventory.get(item);
+			int newQuantity = oldQuantity + quantity;
+			inventory.replace(item, oldQuantity, newQuantity);
+		}
+		else {
+			inventory.put(item, quantity);
+		}
 	}
 	
 	public void useItem(Item item) {
+		System.out.println(item.getClass().getName());
 		if (inventory.containsKey(item)) { // if there is an item in the inventory
 			int oldQuantity = inventory.get(item);
 			int newQuantity = oldQuantity - 1 ;
@@ -28,14 +29,14 @@ public class Inventory {
 		}
 		else {
 			String itemName = item.name;
-			String output = String.format("You dont have any more %s in your inventory.", itemName); // prints if item does not exist in inventory
+			String output = String.format("You dont have any %s in your inventory.", itemName); // prints if item does not exist in inventory
 			System.out.println(output);
 		}
 	}
 	
 	public boolean displayInventory() { // displays inventory to screen
 		// Displays Player Inventory ??
-		Iterator inventoryIterator = inventory.entrySet().iterator();
+		//Iterator inventoryIterator = inventory.entrySet().iterator();
 		
 		System.out.println("\t*** Inventory ***");
 		inventory.forEach((item,quantity) -> System.out.println("\t" + item.name + " : " + quantity));

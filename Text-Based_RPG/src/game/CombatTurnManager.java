@@ -2,6 +2,7 @@ package game;
 import java.util.Scanner;
 import java.io.*;
 import java.util.*;
+import java.util.HashMap;
 
 public class CombatTurnManager {
 
@@ -9,6 +10,7 @@ public class CombatTurnManager {
 	
 	HashSet<String> commandSet = new HashSet<String>();
 	HashSet<Skills> playerSkills = new HashSet<Skills>();
+	HashMap<Item, Integer> tempInventory = new HashMap<Item, Integer>();
 	//ArrayList<Skills> availableSkills;
 	
 	Character player;
@@ -112,7 +114,21 @@ public class CombatTurnManager {
 	
 	public void inventoryCommand() {
 		player.inventory.displayInventory();
-		System.out.println("\nUsing items is not available in the demo\n");
+		
+		System.out.println("\nNarrator: Type the number of the item you want to use!\n"); // 1 for the first item, 2 for the second, and so on...
+		String input = combatCommand.nextLine();
+		int desiredItemToUse = Integer.parseInt(input);
+		int count = 1;
+		
+		for (Map.Entry<Item, Integer> e : player.inventory.inventory.entrySet())
+            if (count == desiredItemToUse) {
+            	player.inventory.useItem(e.getKey());
+            }
+            else {
+            	System.out.println("Ooops something went wrong!");
+            }
+		
+		//System.out.println("\nUsing items is not available in the demo\n");
 		
 	}
 	
