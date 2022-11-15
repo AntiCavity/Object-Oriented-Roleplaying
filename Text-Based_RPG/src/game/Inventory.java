@@ -5,7 +5,8 @@ import java.util.*;
 public class Inventory {
 	
 	HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();	//Key = Item; Value = quantity of Item
-		// Note for Blake; Hashmaps do not allow for duplicate keys
+		// Need to implement singleton pattern. Only one should exist!
+		//TODO
 	
 	public void addItem(Item item, int quantity){
 		if (inventory.containsKey(item)) {	// if item exists in inventory, adds to quantity of item in inventory
@@ -18,8 +19,8 @@ public class Inventory {
 		}
 	}
 	
-	public void useItem(Item item) {
-		System.out.println(item.getClass().getName());
+	public Character useItem(Character player, Item item) {
+		//System.out.println(item.getClass().getName());
 		if (inventory.containsKey(item)) { // if there is an item in the inventory
 			int oldQuantity = inventory.get(item);
 			int newQuantity = oldQuantity - 1 ;
@@ -27,17 +28,20 @@ public class Inventory {
 			
 			if (inventory.get(item) == 0) {inventory.remove(item, 0);}	// if item count == 0, remove from inventory
 		}
-		else {
-			String itemName = item.name;
-			String output = String.format("You dont have any %s in your inventory.", itemName); // prints if item does not exist in inventory
-			System.out.println(output);
-		}
+		
+//		else {
+//			String itemName = item.name;
+//			String output = String.format("You dont have any %s in your inventory.", itemName); // prints if item does not exist in inventory
+//			System.out.println(output);
+//		}
+		
+		useItemType(player, item);
+		return player;
 	}
 	
 	public boolean displayInventory() { // displays inventory to screen
 		// Displays Player Inventory ??
 		//Iterator inventoryIterator = inventory.entrySet().iterator();
-		
 		System.out.println("\t*** Inventory ***");
 		inventory.forEach((item,quantity) -> System.out.println("\t" + item.name + " : " + quantity));
 		System.out.println("\t*****************");
@@ -45,12 +49,49 @@ public class Inventory {
 		return true;
 	}
 	
-	public void equipArmor(Armor armor) {
-		//TODO
+
+	public void useItemType(Character player, Item item) {
+		String itemType = item.getClass().getName();
+		//Type checks item, and executes appropriate method for item Type.
+		if (itemType.equals("game.Potion")) {
+			usePotion(player, (Potion) item);
+		}
+		if (itemType.equals("game.Weapon")) {
+			equipWeapon(player, (Weapon) item);
+		}
+		if (itemType.equals("game.Armor")) {
+			equipArmor(player, (Armor) item);
+		}
 	}
 	
-	public void equipWeapon (Weapon weapon) {
-		//TODO
+	public Character usePotion(Character player, Potion item) {
+		player.healthPoints += item.healPoints;
+		player.mana += item.manaRestore;
+		return player;
 	}
-
+	
+	public Character equipArmor(Character player, Armor newArmor) {
+		//Takes player's armor currently equiped, adds it to their inventory, and then player equips armor selected from inventory
+		Armor oldArmor = player.armor;
+		player.inventory.addItem(oldArmor, 1);
+		player.armor = newArmor;
+		
+		System.out.println("You equiped "+ newArmor.name+ ".");
+		System.out.println(newArmor.itemDescription);
+		
+		return player;
+	}
+	
+	public Character equipWeapon (Character player, Weapon newWeapon) {
+		//Takes player's weapon currently equiped, adds it to their inventory, and then player equips weapon selected from inventory
+		Weapon oldWeapon = player.weapon;
+		player.inventory.addItem(oldWeapon, 1);
+		player.weapon = newWeapon;
+		
+		System.out.println("You equiped "+ newWeapon.name+ ".");
+		System.out.println(newWeapon.itemDescription);
+		
+		return player;
+	}
+	
 }

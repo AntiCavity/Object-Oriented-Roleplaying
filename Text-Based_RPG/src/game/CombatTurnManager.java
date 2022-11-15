@@ -10,8 +10,6 @@ public class CombatTurnManager {
 	
 	HashSet<String> commandSet = new HashSet<String>();
 	HashSet<Skills> playerSkills = new HashSet<Skills>();
-	HashMap<Item, Integer> tempInventory = new HashMap<Item, Integer>();
-	//ArrayList<Skills> availableSkills;
 	
 	Character player;
 	SimpleMob mob;
@@ -117,30 +115,39 @@ public class CombatTurnManager {
 		
 		System.out.println("\nNarrator: Type the number of the item you want to use!\n"); // 1 for the first item, 2 for the second, and so on...
 		String input = combatCommand.nextLine();
-		int desiredItemToUse = Integer.parseInt(input);
-		int count = 1;
+		try { //try and catch for invalid input
+			int desiredItemToUse = Integer.parseInt(input);
+			int count = 1;
 		
-		for (Map.Entry<Item, Integer> e : player.inventory.inventory.entrySet())
-            if (count == desiredItemToUse) {
-            	player.inventory.useItem(e.getKey());
-            }
-            else {
-            	System.out.println("Ooops something went wrong!");
-            }
 		
-		//System.out.println("\nUsing items is not available in the demo\n");
-		
+			for (Map.Entry<Item, Integer> e : player.inventory.inventory.entrySet()) {
+				if (count == desiredItemToUse) {
+					Item useItem = e.getKey();
+					player = player.inventory.useItem(player, e.getKey()); //Updates player object
+					System.out.println("You grabbed " + useItem.name);
+					break;
+				}
+				else {
+					count++;
+            	//TESTING STATEMENTS
+            	//System.out.println("Ooops something went wrong!");
+            	//System.out.println("count: " + count);
+				}
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Invalid input. Please enter a number.");
+		  }
 	}
 	
 	public boolean inspectCommand() {
 		System.out.println("You take a moment to inspect your opponent. Here is what you see... \n");
-		System.out.println(mob.description);
+		System.out.println(mob.description); //prints out mob's physical description for the player
 		return true;
 	}
 	
 	public boolean fleeCommand() {
 		System.out.println("Adventurer: YOU COWARD! DO NOT RUN AWAY! I DON'T WANT TO DIE!");
-		player.healthPoints -= mob.baseDamage;
+		player.healthPoints -= mob.baseDamage; //mob attacks player
 		System.out.println("\nThe " + mob.name + " lunged at you!\n");
 		System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
 		return true;
