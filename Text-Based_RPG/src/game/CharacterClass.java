@@ -26,6 +26,11 @@ public class CharacterClass {
 			+ "this weapon effectively, along with the jet black bodkin tipped arrows, only the most sturdy of foes can shrug off an arrow"
 			+ "from a Longbow"};
 	
+	String[] warriorArmorDes = {"Warrior Rags", "These garments are not fit for wearing, much less for battle, at the"
+			+ " very least you can move swiftly in them."};
+	String[] warriorWeaponDes = {"Twin Scimitars", "These swords, come with a long curve, making them unsuited to thrusting."
+			+ "But because of the long curve, they excel at slicing through flesh and bone."};
+	
 	// Add other class Armor and Weapons here
 		//TODO
 	
@@ -38,6 +43,10 @@ public class CharacterClass {
 		}
 		if (s == "Archer" || s == "archer" || s == "a") {
 			archerClassSetUp();
+		}
+		
+		if (s == "Warrior" || s == "warrior" || s == "w") {
+			warriorClassSetUp();
 		}
 		
 		
@@ -160,5 +169,49 @@ public class CharacterClass {
 		Shoot.energyCost = 0;
 		
 		Skills[] archerSkillSet = {Shoot, FullDraw};
+	}
+	
+	public void warriorClassSetUp() {
+		Armor warriorArmor = new Armor();
+			warriorArmor.name = warriorArmorDes[0];
+			warriorArmor.itemDescription = warriorArmorDes[1];
+			warriorArmor.damageProtection = 1;
+		
+		addArmor(warriorArmor, 1);
+		
+		Weapon twinScimitars = new Weapon();
+			twinScimitars.name = warriorWeaponDes[0];
+			twinScimitars.itemDescription = warriorWeaponDes[1];
+			twinScimitars.damage = 30;
+			twinScimitars.critChance = 0; // These should be high crit too
+		
+		addWeapon(twinScimitars, 1);
+		
+		addHealPotion(2);
+		addManaPotion(2);
+		
+		character.healthPoints = 100;
+		character.mana = 15;
+		character.CharClass = "Warrior";
+		
+		Skills BloodBath = new Skills();
+			BloodBath.name = "Blood Bath";
+			String sd = String.format( "You cut yourself with your %s "
+					+ "and use the resulting adrenaline to unleash a whirlwind of attacks on your enemy", character.weapon);
+			BloodBath.skillDescription = sd;
+			BloodBath.damage = character.weapon.damage + (character.weapon.damage / 2); // getting a weapon upgrade makes this skills damage go up
+			BloodBath.energyCost = 5;
+			// TODO figure out how to do self damage, this should cost around 10-20 health maybe
+			BloodBath.heal = -20; //This might be a neat work around
+			
+		Skills Swing = new Skills();
+		
+			Swing.name = "Swing";
+			Swing.skillDescription = "You take a swing at your enemy, their pain seemingly healing you as you inflict it";
+			Swing.damage = character.weapon.damage;
+			Swing.energyCost = 0;
+			Swing.heal = character.weapon.damage/3;
+			
+		Skills[] warriorSkillSet = {Swing, BloodBath};	
 	}
 }
