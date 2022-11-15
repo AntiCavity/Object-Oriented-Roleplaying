@@ -25,7 +25,7 @@ public class Character {
 	
 	// CharClass attributes
 	
-	String[] classes = {"Rogue", "Archer", "Warrior", "Knight", "Wizard", "Bastard"};
+	String[] classes = {"Rogue", "Archer", "Warrior", "Knight", "Wizard", "Wretch"};
 	
 	String[] rogueArmorInfo = {"Rogue Armor Set", "The black leather and cloth make you "
 			+ "invisible in the night. As you look closer, you see the insignia of the "
@@ -46,6 +46,12 @@ public class Character {
 			+ " very least you can move swiftly in them."};
 	String[] warriorWeaponDes = {"Twin Scimitars", "These swords, come with a long curve, making them unsuited to thrusting."
 			+ "But because of the long curve, they excel at slicing through flesh and bone."};
+	
+	String[] knightArmorDes = {"Knightly Plate Armor", "Armor made of Steel Plates, along with a sigil signifying the wearer's noble status."};
+	
+	String[] knightWeaponDes = {"Steel Bastard Sword", "A Bastard Sword, able to be wielded one or two handed, made out of the finest steel Araluen has to offer."
+			+ "This is the weapon a knight trains with from the age of 9, with and without a shield."};
+	
 	
 	// Add other class Armor and Weapons here
 		//TODO
@@ -83,6 +89,12 @@ public class Character {
 			Character archerCharacter = new Character();
 			archerCharacter.archerClassSetUp();	
 			return archerCharacter;
+		}
+		
+		if (s.equals("Knight")|| s.equals("knight") || s.equals("k")) {
+			Character knightCharacter = new Character();
+			knightCharacter.knightClassSetup();
+			return knightCharacter;
 		}
 		return null;
 	}
@@ -227,6 +239,8 @@ public class Character {
 			warriorArmor.name = warriorArmorDes[0];
 			warriorArmor.itemDescription = warriorArmorDes[1];
 			warriorArmor.damageProtection = 1;
+			int[] resistance = {0,0,0};	//{poisonResistance, bleedResistance, magicResistance}
+			warriorArmor.armorResistance = resistance;
 		
 		addArmor(warriorArmor, 1);
 		
@@ -238,8 +252,8 @@ public class Character {
 		
 		addWeapon(twinScimitars, 1);
 		
-		addHealPotion(2);
-		addManaPotion(2);
+		this.addHealPotion(2);
+		this.addManaPotion(2);
 		
 		this.healthPoints = 100;
 		this.mana = 15;
@@ -269,6 +283,61 @@ public class Character {
 			
 		this.attackSkills = warriorSkillSet;	
 	}
+	
+	
+	public void knightClassSetup() {
+		Armor PlateArmor = new Armor();
+			PlateArmor.name = knightArmorDes[0];
+			PlateArmor.itemDescription = knightArmorDes[1];
+			PlateArmor.damageProtection = 50;
+			int[] resistance = {5,5,5};	//{poisonResistance, bleedResistance, magicResistance}
+			PlateArmor.armorResistance = resistance;
+		
+		addArmor(PlateArmor, 1);
+		
+		Weapon BastardSword = new Weapon();
+			BastardSword.name = knightWeaponDes[0];
+			BastardSword.itemDescription = knightWeaponDes[1];
+			BastardSword.damage = 25;
+			BastardSword.critChance = 0;
+		
+		addWeapon(BastardSword, 1);
+		
+		this.addHealPotion(2);
+		this.addManaPotion(2);
+		
+		this.healthPoints = 100;
+		this.mana = 20;
+		this.CharClass = "Knight";
+		
+		Skills Cleave = new Skills();
+			Cleave.name = "Executioner's cleave";
+			String sd = String.format( "You heave your %s "
+					+ "and put your entire soul into bring justice down on your foe", this.weapon);
+			Cleave.skillDescription = sd;
+			Cleave.damage = this.weapon.damage * 2; // This costs all of your mana so you should only use it in dire straits
+			Cleave.energyCost = 20;
+			Cleave.heal = 0; //This might be a neat work around
+			
+		Skills Thrust = new Skills();
+		
+			Thrust.name = "Thrust";
+			String XD =  String.format("You hold your %s in half-sword, and you thrust at your enemy", this.weapon);
+			Thrust.skillDescription = sd;
+			Thrust.damage = this.weapon.damage;
+			Thrust.energyCost = 0;
+			Thrust.heal = 0;
+			
+			HashSet<Skills> knightSkillSet = new HashSet<>();//{slash, backStab};
+			knightSkillSet.add(Thrust);
+			knightSkillSet.add(Cleave);
+			
+		this.attackSkills = knightSkillSet;
+	
+		
+		
+	}
+	
 	
 	public void createNewInventory() {
 		this.inventory = new Inventory();

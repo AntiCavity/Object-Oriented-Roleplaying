@@ -127,10 +127,30 @@ public class Narrator {
 				narrator.close();
 				break;
 			}
-			if (input.equals("Rogue") || input.equals("r")) {
+			if (input.equals("Rogue") || input.equals("r") || input.equals("rogue")) {
 				character = character.chooseClass(input);
 
 				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be nimble on your feet!");
+				break;
+			}
+			
+			else if (input.equals("Archer") || input.equals("a") || input.equals("archer")) {
+				character = character.chooseClass(input);
+
+				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be an ox of a man to be able to draw that behemoth of a bow.");
+				break;
+			}
+			else if (input.equals("Warrior") || input.equals("w") || input.equals("warrior")) {
+				character = character.chooseClass(input);
+
+				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: If you are a warrior, then where is your armor?");
+				break;
+			}
+			
+			else if (input.equals("Knight") || input.equals("k") || input.equals("knight")) {
+				character = character.chooseClass(input);
+
+				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: What is someone of your stature doing exploring a dungeon?");
 				break;
 			}
 		
