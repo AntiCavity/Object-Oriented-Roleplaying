@@ -73,10 +73,16 @@ public class Character {
 			rogueCharacter.rogueClassSetUp();	
 			return rogueCharacter;
 		}
-		else if (s.equals("Warrior") || s.equals("warrior") || s.equals("w")) {
+		if (s.equals("Warrior") || s.equals("warrior") || s.equals("w")) {
 			Character warriorCharacter = new Character();
 			warriorCharacter.warriorClassSetUp();	
 			return warriorCharacter;
+		}
+		
+		if (s.equals("Archer")|| s.equals("archer") || s.equals("a")) {
+			Character archerCharacter = new Character();
+			archerCharacter.archerClassSetUp();	
+			return archerCharacter;
 		}
 		return null;
 	}
