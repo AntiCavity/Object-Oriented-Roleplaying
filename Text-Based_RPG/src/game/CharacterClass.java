@@ -18,8 +18,13 @@ public class CharacterClass {
 			+ "fog appearing from the base of the blade. It looks familiar, but you "
 			+ "can't quite remember where you saw it from."};
 	
-	String[] archerArmorDes = {};
-	String[] archerWeapon = {};
+	String[] archerArmorDes = {"Ranger's Cloak", "This signature cloak identifies one as a King's Ranger, handpicked to serve the"
+			+ "King as wardens of the various provinces that make up the Kingdom of Araluen"
+			+ "The Ranger's Cloak sports a motley pattern of various colors of the forests found in the Kingdom."
+			+ "Whoever wears this cloak has gone through rigorous tests to be selected as one of the best archers in the Kingdom."};
+	String[] archerWeaponDes = {"Longbow", "This bow has a draw weight of 185 pounts, meaning only very strong individuals can use"
+			+ "this weapon effectively, along with the jet black bodkin tipped arrows, only the most sturdy of foes can shrug off an arrow"
+			+ "from a Longbow"};
 	
 	// Add other class Armor and Weapons here
 		//TODO
@@ -31,6 +36,11 @@ public class CharacterClass {
 		if (s == "Rogue" || s == "rogue" || s == "r") {
 			rogueClassSetUp();
 		}
+		if (s == "Archer" || s == "archer" || s == "a") {
+			archerClassSetUp();
+		}
+		
+		
 	}
 	public void addArmor(Armor armor, int quantity) {
 		inventory.addItem(armor, quantity);
@@ -80,7 +90,7 @@ public class CharacterClass {
 						roguesDagger.name = rogueWeaponInfo[0];
 						roguesDagger.itemDescription = rogueWeaponInfo[1];
 						roguesDagger.damage = 12;
-						roguesDagger.critChance = 0; //TODO
+						roguesDagger.critChance = 0; //TODO Make the dagger have High Crit maybe but lower Damage
 					addWeapon(roguesDagger, 1);
 					
 					addHealPotion(2);
@@ -110,5 +120,45 @@ public class CharacterClass {
 //					character.attackSkills = rogueSkillSet;
 					// Need more skill IDEAS!
 						//TODO
+	}
+	
+	public void archerClassSetUp() {
+		Armor rangerArmor = new Armor();
+			rangerArmor.name = archerArmorDes[0];
+			rangerArmor.itemDescription = archerArmorDes[1];
+			rangerArmor.damageProtection = 5;
+			int[] resistance = {1,0,0};	//{poisonResistance, bleedResistance, magicResistance}
+			rangerArmor.armorResistance = resistance;
+		addArmor(rangerArmor,1);
+		
+		Weapon Longbow = new Weapon();
+			Longbow.name = archerWeaponDes[0];
+			Longbow.itemDescription = archerWeaponDes[1];
+			Longbow.damage = 20;
+			Longbow.critChance = 0; //TODO I believe that the Longbow should have average crit change
+		addWeapon(Longbow, 1);
+		
+		addHealPotion(2);
+		addManaPotion(2);
+		
+		character.healthPoints = 60;
+		character.mana = 30;
+		character.CharClass = "Archer";
+		
+		Skills FullDraw = new Skills();	// Special Skill //
+		FullDraw.name = "Full Draw";
+		FullDraw.skillDescription = "You nock an arrow and draw with your full might, exhausting you heavily";
+		FullDraw.damage = 30; // High Damage but also has a High Mana cost, should be used sparingly
+		FullDraw.energyCost = 10; // Should subract from character.mana
+		FullDraw.heal = 0; // No lifesteal in the Archers skillset
+		
+		Skills Shoot = new Skills(); // Basic Skill //
+		Shoot.name = "Shoot";
+		String sd = String.format("You draw and shoot an arrow from your %s", character.weapon);
+		Shoot.skillDescription = sd;
+		Shoot.damage = character.weapon.damage;
+		Shoot.energyCost = 0;
+		
+		Skills[] archerSkillSet = {Shoot, FullDraw};
 	}
 }
