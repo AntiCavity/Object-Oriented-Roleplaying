@@ -25,7 +25,7 @@ public class Character {
 	
 	// CharClass attributes
 	
-	String[] classes = {"Rogue", "Archer", "Warrior", "Knight", "Wizard", "Wretch"};
+	String[] classes = {"Rogue", "Archer", "Warrior", "Knight", "Mage", "Bastard"};
 	
 	String[] rogueArmorInfo = {"Rogue Armor Set", "The black leather and cloth make you "
 			+ "invisible in the night. As you look closer, you see the insignia of the "
@@ -51,6 +51,10 @@ public class Character {
 	
 	String[] knightWeaponDes = {"Steel Bastard Sword", "A Bastard Sword, able to be wielded one or two handed, made out of the finest steel Araluen has to offer."
 			+ "This is the weapon a knight trains with from the age of 9, with and without a shield."};
+	
+	String[] wizardArmorDes = {"Mage Robes", "Typical robes which are standard to a wizard such as yourself, enchanted to resist magic"};
+	
+	String[] wizardWeaponDes = {"Mage Staff", "Standard issue mage staff from the Mage college of Araluen, Allows you to cast basic spells"};
 	
 	
 	// Add other class Armor and Weapons here
@@ -79,22 +83,28 @@ public class Character {
 			rogueCharacter.rogueClassSetUp();	
 			return rogueCharacter;
 		}
-		if (s.equals("Warrior") || s.equals("warrior") || s.equals("w")) {
+		else if (s.equals("Warrior") || s.equals("warrior") || s.equals("w")) {
 			Character warriorCharacter = new Character();
 			warriorCharacter.warriorClassSetUp();	
 			return warriorCharacter;
 		}
 		
-		if (s.equals("Archer")|| s.equals("archer") || s.equals("a")) {
+		else if (s.equals("Archer")|| s.equals("archer") || s.equals("a")) {
 			Character archerCharacter = new Character();
 			archerCharacter.archerClassSetUp();	
 			return archerCharacter;
 		}
 		
-		if (s.equals("Knight")|| s.equals("knight") || s.equals("k")) {
+		else if (s.equals("Knight")|| s.equals("knight") || s.equals("k")) {
 			Character knightCharacter = new Character();
 			knightCharacter.knightClassSetup();
 			return knightCharacter;
+		}
+		
+		else if (s.equals("Mage")|| s.equals("mage") || s.equals("m")) {
+			Character mageCharacter = new Character();
+			mageCharacter.wizardClassSetup();
+			return mageCharacter;
 		}
 		return null;
 	}
@@ -328,13 +338,64 @@ public class Character {
 			Thrust.energyCost = 0;
 			Thrust.heal = 0;
 			
-			HashSet<Skills> knightSkillSet = new HashSet<>();//{slash, backStab};
-			knightSkillSet.add(Thrust);
-			knightSkillSet.add(Cleave);
+		HashSet<Skills> knightSkillSet = new HashSet<>();//{slash, backStab};
+		knightSkillSet.add(Thrust);
+		knightSkillSet.add(Cleave);
 			
 		this.attackSkills = knightSkillSet;
 	
 		
+		
+	}
+	
+	public void wizardClassSetup() {
+		Armor wizardRobe = new Armor();
+		wizardRobe.name = wizardArmorDes[0];
+		wizardRobe.itemDescription = wizardArmorDes[1];
+		wizardRobe.damageProtection = 5;
+		int[] resistance = {5,0,10};
+		wizardRobe.armorResistance = resistance;
+		
+		addArmor(wizardRobe, 1);
+		
+		
+		Weapon mageStaff = new Weapon();
+		mageStaff.name = wizardWeaponDes[0];
+		mageStaff.itemDescription = wizardWeaponDes[1];
+		mageStaff.damage = 20;
+		mageStaff.critChance = 0;
+		
+		
+		addWeapon(mageStaff, 1);
+		
+		this.addHealPotion(2);
+		this.addManaPotion(2);
+		
+		this.healthPoints = 50;
+		this.mana = 50;
+		this.CharClass = "Wizard";
+		
+		Skills MagicMissle = new Skills();
+		// This should be the main skill the wizard uses having them be thirsty for mana but deal high damage
+			MagicMissle.name = "Magic Missle";
+			MagicMissle.damage = (int) (this.weapon.damage + (this.weapon.damage * 0.75));
+			String skillsDes = String.format("You pour mana into your %s and say the incantations. \nLOREM IPSUM DOLOR SIT AMET! \nWhich unleashes missles of pure mana at your foe", this.weapon.name);
+			MagicMissle.skillDescription = skillsDes;
+			MagicMissle.energyCost = 10;
+			MagicMissle.heal = 0;
+			
+		Skills Thwack = new Skills();
+			//Trash ass skill for if you cant manage your mana that well/finishing off opponents
+			Thwack.name = "Thwack";
+			Thwack.damage = this.weapon.damage/2;
+			String skillD = String.format("You take your %s and you thwack your foe upside the head", this.weapon.name);
+			Thwack.skillDescription = skillD;
+			Thwack.energyCost = 0;
+			Thwack.heal = 0;
+			
+		HashSet<Skills> wizardSkillSet = new HashSet<>();
+		wizardSkillSet.add(Thwack);
+		wizardSkillSet.add(MagicMissle);
 		
 	}
 	
