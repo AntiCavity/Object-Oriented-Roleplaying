@@ -4,9 +4,25 @@ import java.util.*;
 
 public class Inventory {
 	
-	HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();	//Key = Item; Value = quantity of Item
+	//HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();	//Key = Item; Value = quantity of Item
 		// Need to implement singleton pattern. Only one should exist!
 		//TODO
+	
+	private static Inventory inventory_instance = null;
+	
+	public HashMap<Item, Integer> inventory;
+	
+	private Inventory() {
+		inventory = new HashMap<Item, Integer>();
+	}
+	
+	public static Inventory getInstance() {
+		if (inventory_instance == null) {inventory_instance = new Inventory();}
+			return inventory_instance;
+	}
+	
+	
+	
 	
 	public void addItem(Item item, int quantity){
 		if (inventory.containsKey(item)) {	// if item exists in inventory, adds to quantity of item in inventory
