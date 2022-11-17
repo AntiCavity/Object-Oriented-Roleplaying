@@ -56,6 +56,10 @@ public class Character {
 	
 	String[] wizardWeaponDes = {"Mage Staff", "Standard issue mage staff from the Mage college of Araluen, Allows you to cast basic spells"};
 	
+	String[] peasantArmorDes = {"Tattered Rags", "You lost everything, and the only thing you have is what is on your back"};
+    
+    String[] peasantWeaponDes = {"Pitchfork", "This is the only thing they let you keep"};
+	
 	
 	// Add other class Armor and Weapons here
 		//TODO
@@ -66,12 +70,14 @@ public class Character {
 //		// apply damage, debuff, buff or whatever stats is in attackSkill
 //	}
 	
+	/* unused command
 	public int attack(Skills attackSkill) {	// returns int for combatManager class.
 	//TODO
-		return weapon.damage + attackSkill.damage;
+		return attackSkill.damage;
 	// apply damage, debuff, buff or whatever stats is in attackSkill
 }
 
+	*/
 	
 	// Add other class Armor and Weapons here
 		//TODO
@@ -106,6 +112,13 @@ public class Character {
 			mageCharacter.wizardClassSetup();
 			return mageCharacter;
 		}
+		
+		else if (s.equals("Peasant")|| s.equals("peasant") || s.equals("p")) {
+			Character peasantCharacter = new Character();
+			peasantCharacter.peasantClassSetup();
+			return peasantCharacter;
+		}
+		
 		return null;
 	}
 	public void addArmor(Armor armor, int quantity) {
@@ -227,13 +240,13 @@ public class Character {
 		Skills FullDraw = new Skills();	// Special Skill //
 		FullDraw.name = "Full Draw";
 		FullDraw.skillDescription = "You nock an arrow and draw with your full might, exhausting you heavily";
-		FullDraw.damage = 30; // High Damage but also has a High Mana cost, should be used sparingly
+		FullDraw.damage = (int) (this.weapon.damage + (this.weapon.damage * 0.5)); // High Damage but also has a High Mana cost, should be used sparingly
 		FullDraw.energyCost = 10; // Should subract from character.mana
 		FullDraw.heal = 0; // No lifesteal in the Archers skillset
 		
 		Skills Shoot = new Skills(); // Basic Skill //
 		Shoot.name = "Shoot";
-		String sd = String.format("You draw and shoot an arrow from your %s", this.weapon);
+		String sd = String.format("You draw and shoot an arrow from your %s", this.weapon.name);
 		Shoot.skillDescription = sd;
 		Shoot.damage = this.weapon.damage;
 		Shoot.energyCost = 0;
@@ -274,7 +287,7 @@ public class Character {
 		Skills BloodBath = new Skills();
 			BloodBath.name = "Blood Bath";
 			String sd = String.format( "You cut yourself with your %s "
-					+ "and use the resulting adrenaline to unleash a whirlwind of attacks on your enemy", this.weapon);
+					+ "and use the resulting adrenaline to unleash a whirlwind of attacks on your enemy", this.weapon.name);
 			BloodBath.skillDescription = sd;
 			BloodBath.damage = this.weapon.damage + (this.weapon.damage / 2); // getting a weapon upgrade makes this skills damage go up
 			BloodBath.energyCost = 5;
@@ -326,7 +339,7 @@ public class Character {
 		Skills Cleave = new Skills();
 			Cleave.name = "Executioner's cleave";
 			String sd = String.format( "You heave your %s "
-					+ "and put your entire soul into bring justice down on your foe", this.weapon);
+					+ "and put your entire soul into bring justice down on your foe", this.weapon.name);
 			Cleave.skillDescription = sd;
 			Cleave.damage = this.weapon.damage * 2; // This costs all of your mana so you should only use it in dire straits
 			Cleave.energyCost = 20;
@@ -335,7 +348,7 @@ public class Character {
 		Skills Thrust = new Skills();
 		
 			Thrust.name = "Thrust";
-			String XD =  String.format("You hold your %s in half-sword, and you thrust at your enemy", this.weapon);
+			String XD =  String.format("You hold your %s in half-sword, and you thrust at your enemy", this.weapon.name);
 			Thrust.skillDescription = sd;
 			Thrust.damage = this.weapon.damage;
 			Thrust.energyCost = 0;
@@ -402,11 +415,64 @@ public class Character {
 		wizardSkillSet.add(Thwack);
 		wizardSkillSet.add(MagicMissle);
 		
+		this.attackSkills = wizardSkillSet;
+		
 	}
+	public void peasantClassSetup() {
+        Armor peasantRags = new Armor();
+            peasantRags.name = peasantArmorDes[0];
+            peasantRags.itemDescription = peasantArmorDes[1];
+            peasantRags.damageProtection = 0;
+            int[] resistance = {0,0,0};
+            peasantRags.armorResistance = resistance;
+            
+        addArmor(peasantRags, 1);
+            
+        Weapon pitchfork = new Weapon();
+            pitchfork.damage = 10;
+            pitchfork.critChance = 0;
+            pitchfork.name = peasantWeaponDes[0];
+            pitchfork.itemDescription = peasantWeaponDes[1];
+        
+        addWeapon(pitchfork, 1);
+        
+        this.addHealPotion(2);
+        this.addManaPotion(2);
+        
+        this.healthPoints = 50;
+        this.mana = 20;
+        this.CharClass = "Peasant";
+        
+        
+        Skills proletariatFury = new Skills();
+            proletariatFury.damage = this.weapon.damage * 4;
+            proletariatFury.heal = -5;
+            proletariatFury.name = "Proletariat's Fury";
+            String pDes = String.format("You channel all the hate for the system that ruined your life."
+                + "/nThe anger gives you strength, firmly gripping your %s, you unleash this anger on your foe", this.weapon.name);
+            proletariatFury.skillDescription = pDes;
+            proletariatFury.energyCost = 10;
+        
+        Skills bop = new Skills();
+            bop.damage = this.weapon.damage;
+            bop.name = "Bop";
+            bop.skillDescription = "You bop your foe on the head";
+            bop.heal = 0;
+            bop.energyCost = 0;
+            
+        
+        
+        
+            HashSet<Skills> peasantSkillSet = new HashSet<>();
+            peasantSkillSet.add(bop);
+            peasantSkillSet.add(proletariatFury);    
+        
+            this.attackSkills = peasantSkillSet;
+    }
 	
 	
 	public void createNewInventory() {
-		this.inventory = new Inventory();
+		this.inventory = inventory.getInstance();
 	}
 
 }

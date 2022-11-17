@@ -73,6 +73,7 @@ public class CombatTurnManager {
 		String attackDescription = null;
 		while (stop == false) {
 			boolean errCounter = true;
+			boolean manaChecker = true;
 			Iterator<Skills> skills = playerSkills.iterator();
 			while(skills.hasNext()) {	// Prints out skills available for player to use
 				Skills skill = skills.next();
@@ -89,24 +90,41 @@ public class CombatTurnManager {
 			Iterator<Skills> skills2 = playerSkills.iterator();
 			while(skills2.hasNext()) {	// Searches for name of skill player inputs
 				Skills skill2 = skills2.next();
-				if (input.equals(skill2.name)) {playerDmg = (skill2.damage) + (player.weapon.damage); 
-												stop = true;
-												errCounter = false;
-												attackDescription = skill2.skillDescription;}
-			}
-			if (errCounter == true) {
-				System.out.println("Invalid Skill.\nPlease check your spelling.");
-			}
-		}	
+				
+				if (input.equals(skill2.name)) {
+					
+					if (player.mana < skill2.energyCost) {
+						errCounter = false;
+						
+					}
+					else {
+						playerDmg = (skill2.damage);
+						player.mana = player.mana - skill2.energyCost;
+						stop = true;
+						errCounter = false;
+						manaChecker = false;
+						attackDescription = skill2.skillDescription;
+						}
+				}
+				if (errCounter == true) {
+					System.out.println("Invalid Skill.\nPlease check your spelling.");
+			
+				}
+			
+				else if (manaChecker == true) {
+					System.out.println("YOU HAVE NO MANA");
+				}
+			}	
 		
-		System.out.println(attackDescription);
-		System.out.println("Narrator: You dealt: " + playerDmg + " damage!");
-		mob.healthPoints -= playerDmg;
+			System.out.println(attackDescription);
+			System.out.println("Narrator: You dealt: " + playerDmg + " damage!");
+			mob.healthPoints -= playerDmg;
 		
-		if (mob.healthPoints > 0) {
-			System.out.println("\nThe " + mob.name + " lunged at you!\n");
-			System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
-			player.healthPoints -= mob.baseDamage;
+			if (mob.healthPoints > 0) {
+				System.out.println("\nThe " + mob.name + " lunged at you!\n");
+				System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
+				player.healthPoints -= mob.baseDamage;
+			}
 		}
 	}
 	
