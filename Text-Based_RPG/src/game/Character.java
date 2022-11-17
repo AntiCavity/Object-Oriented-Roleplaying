@@ -419,6 +419,7 @@ public class Character {
 		
 	}
 	public void peasantClassSetup() {
+		createNewInventory();
         Armor peasantRags = new Armor();
             peasantRags.name = peasantArmorDes[0];
             peasantRags.itemDescription = peasantArmorDes[1];
@@ -472,6 +473,7 @@ public class Character {
 	
 	
 	public void createNewInventory() {
+		//if there are inventory errors peep this out
 		this.inventory = inventory.getInstance();
 	}
 

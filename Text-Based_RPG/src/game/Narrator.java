@@ -164,7 +164,7 @@ public class Narrator {
 			else if (input.equals("Peasant")|| input.equals("peasant") || input.equals("p")) {
 				character = character.chooseClass(input);
 
-				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: Shouldn't you be reading some books?");
+				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: Only someone who has nothing left would come to this wretched place.");
 				break;
 			}
 			

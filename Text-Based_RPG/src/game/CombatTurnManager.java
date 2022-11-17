@@ -37,6 +37,8 @@ public class CombatTurnManager {
 			
 			System.out.println("\nYour HP: " + player.healthPoints + "\t" + mob.name + " HP: " + mob.healthPoints + "\n");
 			
+			System.out.println("Your mana: " + player.mana + "\n");
+			
 			System.out.println("Narrator: What do you want to do?");
 			
 			String input = combatCommand.nextLine();
@@ -93,7 +95,7 @@ public class CombatTurnManager {
 				
 				if (input.equals(skill2.name)) {
 					
-					if (player.mana < skill2.energyCost) {
+					if (skill2.energyCost > player.mana) {
 						errCounter = false;
 						
 					}
@@ -105,16 +107,17 @@ public class CombatTurnManager {
 						manaChecker = false;
 						attackDescription = skill2.skillDescription;
 						}
-				}
-				if (errCounter == true) {
+				
+					if (errCounter == true) {
 					System.out.println("Invalid Skill.\nPlease check your spelling.");
 			
-				}
+					}
 			
-				else if (manaChecker == true) {
+					else if (manaChecker == true) {
 					System.out.println("YOU HAVE NO MANA");
-				}
-			}	
+					}
+				}	
+			}
 		
 			System.out.println(attackDescription);
 			System.out.println("Narrator: You dealt: " + playerDmg + " damage!");
@@ -124,7 +127,8 @@ public class CombatTurnManager {
 				System.out.println("\nThe " + mob.name + " lunged at you!\n");
 				System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
 				player.healthPoints -= mob.baseDamage;
-			}
+				}
+			
 		}
 	}
 	
