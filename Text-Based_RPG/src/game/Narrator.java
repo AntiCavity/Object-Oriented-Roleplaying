@@ -179,7 +179,10 @@ public class Narrator {
 //		System.out.println(character.weapon.name);
 //		character.inventory.displayInventory();
 //		System.out.println(help());
-		ctm.startCombatEncounter(character);
+		
+			ctm.startCombatEncounter(character);
+			ctm.startCombatEncounter(character);
+			ctm.startCombatEncounter(character);
 	}
 	
 	public static String help() {

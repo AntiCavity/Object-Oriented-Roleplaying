@@ -52,6 +52,9 @@ public class CombatTurnManager {
 			else if (input.equals("in")) {inspectCommand();}
 			else if (input.equals("f")) {fleeCommand();}
 			else if (input.equals("help")) {helpCommand();}
+			else if (input.equals("quit")) {
+												combatCommand.close();
+												break;}
 		}
 		if (player.healthPoints <= 0) {
 			System.out.println("Narrator: You took a fatal hit from " + mob.name + ". Your body is left for the "
@@ -63,7 +66,7 @@ public class CombatTurnManager {
 		
 		else if (mob.healthPoints <= 0) {
 			System.out.println("You have slain the " + mob.name);
-			combatCommand.close();
+			//combatCommand.close();
 		}
 	}
 	
