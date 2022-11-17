@@ -201,6 +201,7 @@ public class Character {
 	}
 	
 	public void archerClassSetUp() {
+		createNewInventory();
 		Armor rangerArmor = new Armor();
 			rangerArmor.name = archerArmorDes[0];
 			rangerArmor.itemDescription = archerArmorDes[1];
@@ -245,6 +246,7 @@ public class Character {
 	}
 	
 	public void warriorClassSetUp() {
+		createNewInventory();
 		Armor warriorArmor = new Armor();
 			warriorArmor.name = warriorArmorDes[0];
 			warriorArmor.itemDescription = warriorArmorDes[1];
@@ -296,6 +298,7 @@ public class Character {
 	
 	
 	public void knightClassSetup() {
+		createNewInventory();
 		Armor PlateArmor = new Armor();
 			PlateArmor.name = knightArmorDes[0];
 			PlateArmor.itemDescription = knightArmorDes[1];
@@ -349,6 +352,7 @@ public class Character {
 	}
 	
 	public void wizardClassSetup() {
+		createNewInventory();
 		Armor wizardRobe = new Armor();
 		wizardRobe.name = wizardArmorDes[0];
 		wizardRobe.itemDescription = wizardArmorDes[1];
@@ -376,6 +380,7 @@ public class Character {
 		this.CharClass = "Wizard";
 		
 		Skills MagicMissle = new Skills();
+		createNewInventory();
 		// This should be the main skill the wizard uses having them be thirsty for mana but deal high damage
 			MagicMissle.name = "Magic Missle";
 			MagicMissle.damage = (int) (this.weapon.damage + (this.weapon.damage * 0.75));

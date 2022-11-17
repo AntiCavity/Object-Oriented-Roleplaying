@@ -117,8 +117,8 @@ public class Narrator {
 		System.out.println("Adventurer: " + character.name + " was it?");		
 		System.out.println("Adventurer: Now that is an excellent name which befits a true warrior such as yourself.");
 		System.out.println("Adventurer: Now what type of warrior are you, " + character.name + "?");
-		System.out.println("Narrator: Your class choices are: \n\tRogue (This is the only one in the demo.)"
-				+ "\n\tWarrior \n\tArcher \n\tKnight \n\tMage \n\tBastard");
+		System.out.println("Narrator: Your class choices are: \n\tRogue"
+				+ "\n\tWarrior \n\tArcher \n\tKnight \n\tMage \n\tPeasant");
 		
 		while (true) {	
 			String input = narrator.nextLine();
