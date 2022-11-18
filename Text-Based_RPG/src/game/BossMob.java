@@ -1,11 +1,11 @@
 package game;
 
-public class BossMob {
-	String name;
-	String description;
-	int baseDamage;
-	int healthPoints;
-	Skills[] mobAttackSkills;
+public class BossMob extends Mob{
+//	String name;
+//	String description;
+//	int baseDamage;
+//	int healthPoints;
+//	Skills[] mobAttackSkills;
 	
 	public int attack() {
 		return baseDamage;

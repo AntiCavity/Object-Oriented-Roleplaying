@@ -65,6 +65,8 @@ public class Narrator {
 	static Scanner narrator = new Scanner(System.in);
 	static Character character = new Character();
 	static CombatTurnManager ctm = new CombatTurnManager();
+	static SimpleMob mob;
+	static SimpleMobGenerator generator;
 	
 	public static void main(String[] args) {
 		// TODO
@@ -174,15 +176,27 @@ public class Narrator {
 			
 			}
 		}
+
 		//Tests
 //		System.out.println(character.CharClass);
 //		System.out.println(character.weapon.name);
 //		character.inventory.displayInventory();
 //		System.out.println(help());
 		
-			ctm.startCombatEncounter(character);
-			ctm.startCombatEncounter(character);
-			ctm.startCombatEncounter(character);
+//			ctm.startCombatEncounter(character);
+//			ctm.startCombatEncounter(character);
+//			ctm.startCombatEncounter(character);
+
+		int mobLvlUp = 1; //Sets level mob is at. Progressivly gets more difficult to fight. 
+		while(mobLvlUp != 5) {//start of while loop
+			generator = new SimpleMobGenerator();
+			mob = generator.createRandomEncounter(mobLvlUp);
+			ctm.startCombatEncounter(character, mob);
+			//bag.grabLoot(); //maybe gives our player an opportunity to grab loot then on to the next fight!
+			mobLvlUp++;
+		}//end of while loop
+//		
+		
 	}
 	
 	public static String help() {

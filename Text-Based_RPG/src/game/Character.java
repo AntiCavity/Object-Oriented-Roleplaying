@@ -137,7 +137,7 @@ public class Character {
 		Potion healthPotion = new Potion();
 			healthPotion.name = name;
 			healthPotion.itemDescription = info;
-			healthPotion.healPoints = 15;
+			healthPotion.healPoints = 30;
 		
 		this.inventory.addItem(healthPotion, quantity);	//adds item to player inventory
 		

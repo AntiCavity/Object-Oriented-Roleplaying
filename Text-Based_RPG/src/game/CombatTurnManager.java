@@ -12,12 +12,18 @@ public class CombatTurnManager {
 	HashSet<Skills> playerSkills = new HashSet<Skills>();
 	
 	Character player;
-	SimpleMob mob;
-	SimpleMobGenerator generator;
+	Mob mob;
+	//SimpleMobGenerator generator;
 		
-	public void startCombatEncounter(Character p) {
-		generator = new SimpleMobGenerator();
-		mob = generator.createRandomEncounter();
+	public void startCombatEncounter(Character p, Mob m) {
+		//generator = new SimpleMobGenerator();
+		//mob = generator.createRandomEncounter();
+		if (m.getClass().getName().equals("game.SimpleMob")) {
+			mob = (SimpleMob) m;
+		}
+		else if (m.getClass().getName().equals("game.BossMob")) {
+			mob = (BossMob) m;
+		}
 		player = p;
 		playerSkills = (player.attackSkills);
 
@@ -28,6 +34,7 @@ public class CombatTurnManager {
 		commandSet.add("f");
 		commandSet.add("help");
 		
+		//TODO Maybe move this to Narrator for a linear experience
 		System.out.println("Adventurer: Oh by the Gods! What is that thing!?");
 		System.out.println("Narrator: You turn your head to find a " + mob.name + " behind you! \n" 
 				+ "\t You draw your " + player.weapon.name + " and prepare for a battle!");
@@ -61,7 +68,7 @@ public class CombatTurnManager {
 					+ "vultures...");
 //			System.out.println("GAME OVER");
 			gameOver();
-			combatCommand.close();
+			//combatCommand.close();
 		}
 		
 		else if (mob.healthPoints <= 0) {

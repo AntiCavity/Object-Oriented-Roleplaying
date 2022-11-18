@@ -1,18 +1,20 @@
 package game;
 
-public class SimpleMob {
+public class SimpleMob extends Mob{
 	
-	String name;
-	String description;
-	int baseDamage;
-	int healthPoints;
-	Skills[] mobAttackSkills;
+//	int level;
+//	String name;
+//	String description;
+//	int baseDamage;
+//	int healthPoints;
+//	Skills[] mobAttackSkills;
 	
 	public int attack() {
 		return baseDamage;
 	}
 	
-	public SimpleMob(String name, String description, int baseDamage, int healthPoints) {
+	public SimpleMob(String name, String description, int baseDamage, int healthPoints, int lvl) {
+		this.level = lvl;
 		this.name = name;
 		this.description = description;
 		this.baseDamage = baseDamage;
