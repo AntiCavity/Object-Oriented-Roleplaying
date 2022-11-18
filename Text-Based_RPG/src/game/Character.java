@@ -150,6 +150,7 @@ public class Character {
 		Potion manaPotion = new Potion();
 			manaPotion.name = name;
 			manaPotion.itemDescription = info;
+			manaPotion.manaRestore = 15;
 			
 		this.inventory.addItem(manaPotion, quantity);
 	}
