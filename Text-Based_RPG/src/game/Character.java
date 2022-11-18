@@ -477,6 +477,12 @@ public class Character {
 		//if there are inventory errors peep this out
 		this.inventory = inventory.getInstance();
 	}
+	
+	public void characterLevelUp(int level) {
+		this.healthPoints = this.healthPoints + (int) (this.healthPoints * (level * 0.6));
+		//this.weapon.damage = (int) (this.weapon.damage * (level * 0.4)); we probably would need to reinitialize every skill once we equip a weapon or level up
+		System.out.println("You encounter with this foe has made you a hardier person");
+	}
 
 }
 

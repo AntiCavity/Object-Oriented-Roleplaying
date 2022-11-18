@@ -43,7 +43,7 @@ public class Bag {
 			character.addHealPotion(1);
 		}
 		else if (diceRoll == 2) {
-			character.addManaPotion(0);
+			character.addManaPotion(1);
 		}
 		
 	}

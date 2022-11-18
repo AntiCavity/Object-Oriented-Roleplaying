@@ -72,7 +72,7 @@ public class CombatTurnManager {
 		}
 		
 		else if (mob.healthPoints <= 0) {
-			System.out.println("You have slain the " + mob.name);
+			System.out.println("\nYou have slain the " + mob.name + "\n");
 			//combatCommand.close();
 		}
 	}

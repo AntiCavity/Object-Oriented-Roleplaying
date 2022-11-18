@@ -194,7 +194,8 @@ public class Narrator {
 			mob = generator.createRandomEncounter(mobLvlUp);
 			ctm.startCombatEncounter(character, mob);
 			bag.randomLootDrop(character);
-			System.out.println("You have found a Potion");
+			character.characterLevelUp(mobLvlUp);
+			System.out.println("\nYou have found a potion on the body of your enemy");
 			character.inventory.displayInventory();
 			//bag.grabLoot(); //maybe gives our player an opportunity to grab loot then on to the next fight!
 			mobLvlUp++;
