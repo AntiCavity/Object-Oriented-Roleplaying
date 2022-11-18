@@ -67,7 +67,7 @@ public class Narrator {
 	static CombatTurnManager ctm = new CombatTurnManager();
 	static SimpleMob mob;
 	static SimpleMobGenerator generator;
-	static Bag bag;
+	static Bag bag = new Bag();
 	
 	public static void main(String[] args) {
 		// TODO
@@ -193,9 +193,8 @@ public class Narrator {
 			generator = new SimpleMobGenerator();
 			mob = generator.createRandomEncounter(mobLvlUp);
 			ctm.startCombatEncounter(character, mob);
-			Potion lootPotion = bag.randomLootDrop();
+			bag.randomLootDrop(character);
 			System.out.println("You have found a Potion");
-			character.inventory.addItem(lootPotion, 1);
 			character.inventory.displayInventory();
 			//bag.grabLoot(); //maybe gives our player an opportunity to grab loot then on to the next fight!
 			mobLvlUp++;
