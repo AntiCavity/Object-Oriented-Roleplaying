@@ -11,16 +11,16 @@ public class Character {
 	
 	String name;
 	int healthPoints;
-	//int level; // removing for now...
+	//int level;
 	HashSet<Skills> attackSkills; // Skills list
 	int mana;
 	Armor armor;
 	Weapon weapon;
-	// armor adds health points to the character for now...
-	Object debuff;
-	Object buff;
+//	Object debuff;
+//	Object buff;
 	String CharClass;
 	Inventory inventory;
+	Potion potion;
 	
 	
 	// CharClass attributes
@@ -130,27 +130,24 @@ public class Character {
 		this.weapon = weapon;
 	}
 	public void addHealPotion(int quantity) {
+		System.out.println("healthPotion");
 		//builds Healing Potion Object//
-		String name = "Health Potion";
-		String info = "This red liquid is said to hold healing properties that heal any "
-				+ "type of wounds! Just don't loose a limb or your head...";
-		Potion healthPotion = new Potion();
-			healthPotion.name = name;
-			healthPotion.itemDescription = info;
-			healthPotion.healPoints = 30;
-		
+//		String name = "Health Potion";
+//		String info = "This red liquid is said to hold healing properties that heal any "
+//				+ "type of wounds! Just don't loose a limb or your head...";
+		Potion healthPotion = Potion.getInstance();
+			healthPotion = healthPotion.addHealthPotion();
 		this.inventory.addItem(healthPotion, quantity);	//adds item to player inventory
 		
 	}
 	public void addManaPotion(int quantity) {
+		System.out.println("manaPotion");
 		//Builds Mana Potion Object//
-		String name = "Mana Potion";
-		String info = "This green looking liquid smells vile! It reminds you of the farms "
-				+ "that are to the east.";
-		Potion manaPotion = new Potion();
-			manaPotion.name = name;
-			manaPotion.itemDescription = info;
-			manaPotion.manaRestore = 15;
+//		String name = "Mana Potion";
+//		String info = "This green looking liquid smells vile! It reminds you of the farms "
+//				+ "that are to the east.";
+		Potion manaPotion = Potion.getInstance();
+			manaPotion = manaPotion.addManaPotion();
 			
 		this.inventory.addItem(manaPotion, quantity);
 	}
@@ -173,7 +170,7 @@ public class Character {
 					Weapon roguesDagger = new Weapon();
 						roguesDagger.name = rogueWeaponInfo[0];
 						roguesDagger.itemDescription = rogueWeaponInfo[1];
-						roguesDagger.damage = 12;
+						roguesDagger.damage = 20;
 						roguesDagger.critChance = 0; //TODO
 					addWeapon(roguesDagger, 1);
 					
@@ -194,8 +191,8 @@ public class Character {
 						backStab.name = "Back Stab";
 						backStab.skillDescription = "You swiftly sidestep the opponent landing a sharp blow to the opponent's back"
 								+ " stealing some lifeforce in the process.";
-						backStab.damage = 20;
-						backStab.energyCost = 5; // Should subract from character.mana
+						backStab.damage = 35;
+						backStab.energyCost = 15; // Should subract from character.mana
 						backStab.heal = 3; // Small amount of health is restored and subtract from mob.health
 						
 					Skills slash = new Skills(); // Standard Skill //

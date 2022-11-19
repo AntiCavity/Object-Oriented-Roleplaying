@@ -178,16 +178,6 @@ public class Narrator {
 			}
 		}
 
-		//Tests
-//		System.out.println(character.CharClass);
-//		System.out.println(character.weapon.name);
-//		character.inventory.displayInventory();
-//		System.out.println(help());
-		
-//			ctm.startCombatEncounter(character);
-//			ctm.startCombatEncounter(character);
-//			ctm.startCombatEncounter(character);
-
 		int mobLvlUp = 1; //Sets level mob is at. Progressivly gets more difficult to fight. 
 		while(mobLvlUp != 5) {//start of while loop
 			generator = new SimpleMobGenerator();

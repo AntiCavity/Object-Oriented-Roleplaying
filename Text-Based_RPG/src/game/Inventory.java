@@ -11,9 +11,11 @@ public class Inventory {
 	private static Inventory inventory_instance = null;
 	
 	public HashMap<Item, Integer> inventory;
+	public HashSet<String> itemSet;
 	
 	private Inventory() {
 		inventory = new HashMap<Item, Integer>();
+		itemSet = new HashSet<String>();
 	}
 	
 	public static Inventory getInstance() {

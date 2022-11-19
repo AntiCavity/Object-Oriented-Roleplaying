@@ -68,6 +68,7 @@ public class CombatTurnManager {
 					+ "vultures...");
 //			System.out.println("GAME OVER");
 			gameOver();
+			System.exit(0); //Closes program when killed
 			//combatCommand.close();
 		}
 		
