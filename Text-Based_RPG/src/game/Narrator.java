@@ -209,15 +209,19 @@ public class Narrator {
 		System.out.println("Narrator: You turn your head to find a mysterious shadow behind you! \n" 
 				+ "\t You draw your " + character.weapon.name + " and prepare for a battle!");
 		
-		int mobLvlUp = 1; //Sets level mob is at. Progressivly gets more difficult to fight. 
+		int mobLvlUp = 1; //Sets level mob is at. Progressivly gets more difficult to fight. Ends after 3 encounters.
 		while(mobLvlUp != 4) {//start of while loop
 			generator = new SimpleMobGenerator();
 			mob = generator.createRandomEncounter(mobLvlUp);
 			ctm.startCombatEncounter(character, mob);
-			System.out.println("\nYou have found a potion on the body of your enemy");
+			System.out.println("\nYou have found a potion on the body of your enemy.");
+			sleep(2);
 			bag.randomLootDrop(character);
+			sleep(2);
 			character.characterLevelUp(mobLvlUp);
+			sleep(2);
 			character.inventory.displayInventory();
+			sleep(2);
 			//bag.grabLoot(); //maybe gives our player an opportunity to grab loot then on to the next fight!
 			mobLvlUp++;
 		}//end of while loop
@@ -225,9 +229,9 @@ public class Narrator {
 		System.out.println("Adventurer: Thank you for saving me! You're a brave adventurer for fending off those beasts!");
 		System.out.println("Here is a reward for protecting me...");
 		bag.randomLootDrop(character); 
-		sleep(1);
+		sleep(2);
 		bag.randomLootDrop(character);
-		sleep(1);
+		sleep(2);
 		bossEvent();
 		
 		
@@ -240,20 +244,27 @@ public class Narrator {
 	}
 	
 	public static void bossEvent() {
-		System.out.println("Narrator: You then continue your journey through the cave you woke up in."
-				+ "\nYou learn from the strange adventurer that you encountered that this cave is named The Cave Of Forever."
-				+ "\nAlmost seems somewhat unimaginative..."
-				+ "\nLegend has it, that once someone enters the cave, they never come out until they have faced a great trial."
-				+ "\nI sense some forshadowing happening...");
+		System.out.println("Narrator: You then continue your journey through the cave you woke up in.");
+		sleep(2);
+		System.out.println("You learn from the strange adventurer that you encountered that this cave is named The Cave Of Forever.");
+		sleep(2);
+		System.out.println("Almost seems somewhat unimaginative...");
+		sleep(2);
+		System.out.println("Legend has it, that once someone enters the cave, they never come out until they have faced a great trial.");
+		sleep(2);
+		System.out.println("I sense some forshadowing happening...");
 		sleep(2);
 		System.out.println("BOOM");
 		sleep(2);
 		System.out.println("BOOM");
 		sleep(2);
 		System.out.println("Adventurer: Wait... Do you hear that?");
+		sleep(2);
 		BossMobGenerator generator = new BossMobGenerator();
 		mob = generator.createRandomEncounter();
-		
+		System.out.println("Narrator: Your gut tells you this must be the great trial that the strage adventurer mentioned...");
+		sleep(2);
+		ctm.startCombatEncounter(character, mob);
 	}
 	
 	public static void sleep(int seconds) {

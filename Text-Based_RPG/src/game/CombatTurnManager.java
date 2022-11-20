@@ -105,6 +105,7 @@ public class CombatTurnManager {
 					else {
 						playerDmg = (skill2.damage);
 						player.mana = player.mana - skill2.energyCost;
+						player.healthPoints = player.healthPoints - skill2.heal;
 						stop = true;
 						errCounter = false;
 						manaChecker = false;

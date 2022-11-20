@@ -35,12 +35,12 @@ public class Character {
 			+ "can't quite remember where you saw it from."};
 	
 	String[] archerArmorDes = {"Ranger's Cloak", "This signature cloak identifies one as a King's Ranger, handpicked to serve the"
-			+ "King as wardens of the various provinces that make up the Kingdom of Araluen"
+			+ "King as wardens of the various provinces that make up the Kingdom of Araluen."
 			+ "The Ranger's Cloak sports a motley pattern of various colors of the forests found in the Kingdom."
 			+ "Whoever wears this cloak has gone through rigorous tests to be selected as one of the best archers in the Kingdom."};
 	String[] archerWeaponDes = {"Longbow", "This bow has a draw weight of 185 pounts, meaning only very strong individuals can use"
 			+ "this weapon effectively, along with the jet black bodkin tipped arrows, only the most sturdy of foes can shrug off an arrow"
-			+ "from a Longbow"};
+			+ "from a Longbow."};
 	
 	String[] warriorArmorDes = {"Warrior Rags", "These garments are not fit for wearing, much less for battle, at the"
 			+ " very least you can move swiftly in them."};
@@ -52,13 +52,13 @@ public class Character {
 	String[] knightWeaponDes = {"Steel Bastard Sword", "A Bastard Sword, able to be wielded one or two handed, made out of the finest steel Araluen has to offer."
 			+ "This is the weapon a knight trains with from the age of 9, with and without a shield."};
 	
-	String[] wizardArmorDes = {"Mage Robes", "Typical robes which are standard to a wizard such as yourself, enchanted to resist magic"};
+	String[] wizardArmorDes = {"Mage Robes", "Typical robes which are standard to a wizard such as yourself, enchanted to resist magic."};
 	
-	String[] wizardWeaponDes = {"Mage Staff", "Standard issue mage staff from the Mage college of Araluen, Allows you to cast basic spells"};
+	String[] wizardWeaponDes = {"Mage Staff", "Standard issue mage staff from the Mage college of Araluen, Allows you to cast basic spells."};
 	
-	String[] peasantArmorDes = {"Tattered Rags", "You lost everything, and the only thing you have is what is on your back"};
+	String[] peasantArmorDes = {"Tattered Rags", "You lost everything, and the only thing you have is what is on your back."};
     
-    String[] peasantWeaponDes = {"Pitchfork", "This is the only thing they let you keep"};
+    String[] peasantWeaponDes = {"Pitchfork", "This is the only thing they let you keep..."};
 	
 	
 	// Add other class Armor and Weapons here
@@ -448,7 +448,7 @@ public class Character {
             proletariatFury.heal = -5;
             proletariatFury.name = "Proletariat's Fury";
             String pDes = String.format("You channel all the hate for the system that ruined your life."
-                + "/nThe anger gives you strength, firmly gripping your %s, you unleash this anger on your foe", this.weapon.name);
+                + "\nThe anger gives you strength, firmly gripping your %s, you unleash this anger on your foe", this.weapon.name);
             proletariatFury.skillDescription = pDes;
             proletariatFury.energyCost = 10;
         
