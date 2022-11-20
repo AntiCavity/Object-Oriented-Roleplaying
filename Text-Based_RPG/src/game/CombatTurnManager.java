@@ -184,8 +184,11 @@ public class CombatTurnManager {
 	
 	public boolean helpCommand() {
 		System.out.println("Commands you can type:\n\t a: Attack\n\t i: Inventory\n\t in: Inspect\n\t f: Flee\n");
-		System.out.println("While in the inventory, to use an item enter a number like '1' to use the item at the top of the inventory list."
-				+ "\n\tIf you want to use the second item, input '2', and the third item '3' and so on.");
+		System.out.println("\tWhile in the inventory, to use an item enter a number like '1' to use the item at the top of the inventory list."
+				+ "\nIf you want to use the second item, input '2', and the third item '3' and so on.");
+		System.out.println("\n\tInputing the attack command will promt you to enter an attack skill you would like to use."
+				+ "\nIn order to use a skill, you must spell it exactly as it is displayed in order for the command to work."
+				+ "\nMake sure you keep track of your mana before you launch an attack. Trying to launch an attack that requires mana could mean death if you don't have enough!");
 		return true;
 	}
 	
