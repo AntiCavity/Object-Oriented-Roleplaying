@@ -2,7 +2,7 @@ package game;
 
 public class BossMobGenerator {
 	String[] bossMobs = {"Skeleton King", "Cave Spider Hive Mind", "Wasp Queen", "Dragon Mother", "Bandit Leader"};
-	int[] bossMobHealth = {500, 400, 450, 750, 350};
+	int[] bossMobHealth = {250, 200, 250, 750, 150};
 	int[] bossMobDamage = {40, 40, 45, 60, 30};
 	String[] bossMobDescription = {"A skeleton that stands 8 feet tall with a giant cleaver as a weapon! Was there really a creature that lived that was this tall?",
 			"This spider looks different from the others... Its bigger, taller, and all the other cave spiders rush to aid it.",
