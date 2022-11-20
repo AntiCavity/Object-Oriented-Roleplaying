@@ -124,7 +124,7 @@ public class Narrator {
 		sleep(2);
 		System.out.println("You also notice an erie green light emmiting in the cave, but you can't locate it's origin.");
 		sleep(2);
-		System.out.println("The rining in your ears suddenly transforms into words coming from a stanger behind you.");
+		System.out.println("The ringing in your ears suddenly transforms into words coming from a stanger behind you.");
 		sleep(2);
 		System.out.println("Was he there the whole time?");
 		sleep(2);

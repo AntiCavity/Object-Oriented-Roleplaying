@@ -153,7 +153,7 @@ public class CombatTurnManager {
 				if (count == desiredItemToUse) {
 					Item useItem = e.getKey();
 					player = player.inventory.useItem(player, e.getKey()); //Updates player object
-					System.out.println("You grabbed " + useItem.name);
+					System.out.println("You used your " + useItem.name);
 					break;
 				}
 				else {

@@ -190,9 +190,9 @@ public class Character {
 						backStab.name = "Back Stab";
 						backStab.skillDescription = "You swiftly sidestep the opponent landing a sharp blow to the opponent's back"
 								+ " stealing some lifeforce in the process.";
-						backStab.damage = 35;
+						backStab.damage = (int) (this.weapon.damage + (this.weapon.damage *0.5));
 						backStab.energyCost = 15; // Should subract from character.mana
-						backStab.heal = 3; // Small amount of health is restored and subtract from mob.health
+						backStab.heal = (int) (backStab.damage *0.25); // Small amount of health is restored and subtract from mob.health
 						
 					Skills slash = new Skills(); // Standard Skill //
 						slash.name = "Slash";
@@ -287,7 +287,7 @@ public class Character {
 					+ "and use the resulting adrenaline to unleash a whirlwind of attacks on your enemy", this.weapon.name);
 			BloodBath.skillDescription = sd;
 			BloodBath.damage = this.weapon.damage + (this.weapon.damage / 2); // getting a weapon upgrade makes this skills damage go up
-			BloodBath.energyCost = 5;
+			BloodBath.energyCost = 15;
 			// TODO figure out how to do self damage, this should cost around 10-20 health maybe
 			BloodBath.heal = -20; //This might be a neat work around
 			
