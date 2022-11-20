@@ -1,7 +1,6 @@
 package game;
 
 import java.util.*;
-import java.io.*;
 
 public class Character {
 
@@ -160,7 +159,7 @@ public class Character {
 						rogueArmor.name = rogueArmorInfo[0];
 						rogueArmor.itemDescription = rogueArmorInfo[1];
 						rogueArmor.damageProtection = 5;
-						int[] resistance = {0,0,0};	//{poisonResistance, bleedResistance, magicResistance}
+						int[] resistance = {0,1,0};	//{poisonResistance, bleedResistance, magicResistance}
 						rogueArmor.armorResistance = resistance;
 					addArmor(rogueArmor,1);
 					
@@ -261,7 +260,7 @@ public class Character {
 		Armor warriorArmor = new Armor();
 			warriorArmor.name = warriorArmorDes[0];
 			warriorArmor.itemDescription = warriorArmorDes[1];
-			warriorArmor.damageProtection = 1;
+			warriorArmor.damageProtection = 10;
 			int[] resistance = {0,0,0};	//{poisonResistance, bleedResistance, magicResistance}
 			warriorArmor.armorResistance = resistance;
 		
@@ -313,7 +312,7 @@ public class Character {
 		Armor PlateArmor = new Armor();
 			PlateArmor.name = knightArmorDes[0];
 			PlateArmor.itemDescription = knightArmorDes[1];
-			PlateArmor.damageProtection = 50;
+			PlateArmor.damageProtection = 30;
 			int[] resistance = {5,5,5};	//{poisonResistance, bleedResistance, magicResistance}
 			PlateArmor.armorResistance = resistance;
 		

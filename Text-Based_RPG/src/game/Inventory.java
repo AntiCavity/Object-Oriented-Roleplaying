@@ -87,6 +87,7 @@ public class Inventory {
 		Armor oldArmor = player.armor;
 		player.inventory.addItem(oldArmor, 1);
 		player.armor = newArmor;
+		player.healthPoints += player.armor.damageProtection; //implements armor protection
 		
 		System.out.println("You equiped "+ newArmor.name+ ".");
 		System.out.println(newArmor.itemDescription);
