@@ -184,6 +184,8 @@ public class CombatTurnManager {
 	
 	public boolean helpCommand() {
 		System.out.println("Commands you can type:\n\t a: Attack\n\t i: Inventory\n\t in: Inspect\n\t f: Flee\n");
+		System.out.println("While in the inventory, to use an item enter a number like '1' to use the item at the top of the inventory list."
+				+ "\n\tIf you want to use the second item, input '2', and the third item '3' and so on.");
 		return true;
 	}
 	
