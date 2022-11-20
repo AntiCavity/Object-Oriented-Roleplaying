@@ -25,7 +25,7 @@ public class Character {
 	
 	// CharClass attributes
 	
-	String[] classes = {"Rogue", "Archer", "Warrior", "Knight", "Mage", "Bastard"};
+	String[] classes = {"Rogue", "Archer", "Warrior", "Knight", "Mage", "Peasent"};
 	
 	String[] rogueArmorInfo = {"Rogue Armor Set", "The black leather and cloth make you "
 			+ "invisible in the night. As you look closer, you see the insignia of the "
@@ -130,7 +130,7 @@ public class Character {
 		this.weapon = weapon;
 	}
 	public void addHealPotion(int quantity) {
-		System.out.println("healthPotion");
+		System.out.println("Health Potion was added to your inventory!");
 		//builds Healing Potion Object//
 //		String name = "Health Potion";
 //		String info = "This red liquid is said to hold healing properties that heal any "
@@ -141,7 +141,7 @@ public class Character {
 		
 	}
 	public void addManaPotion(int quantity) {
-		System.out.println("manaPotion");
+		System.out.println("Mana Potion was added to your inventory!");
 		//Builds Mana Potion Object//
 //		String name = "Mana Potion";
 //		String info = "This green looking liquid smells vile! It reminds you of the farms "

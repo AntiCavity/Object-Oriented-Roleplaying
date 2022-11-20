@@ -4,27 +4,20 @@ import java.util.*;
 
 public class Inventory {
 	
-	//HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();	//Key = Item; Value = quantity of Item
-		// Need to implement singleton pattern. Only one should exist!
-		//TODO
-	
 	private static Inventory inventory_instance = null;
 	
 	public HashMap<Item, Integer> inventory;
-	public HashSet<String> itemSet;
+	//public HashSet<String> itemSet;
 	
 	private Inventory() {
 		inventory = new HashMap<Item, Integer>();
-		itemSet = new HashSet<String>();
+		//itemSet = new HashSet<String>();
 	}
 	
 	public static Inventory getInstance() {
 		if (inventory_instance == null) {inventory_instance = new Inventory();}
 			return inventory_instance;
 	}
-	
-	
-	
 	
 	public void addItem(Item item, int quantity){
 		if (inventory.containsKey(item)) {	// if item exists in inventory, adds to quantity of item in inventory
@@ -57,9 +50,9 @@ public class Inventory {
 		return player;
 	}
 	
-	public boolean displayInventory() { // displays inventory to screen
-		// Displays Player Inventory ??
-		//Iterator inventoryIterator = inventory.entrySet().iterator();
+	public boolean displayInventory() { 
+		// Displays Player Inventory
+		// Iterator inventoryIterator = inventory.entrySet().iterator();
 		System.out.println("\t*** Inventory ***");
 		inventory.forEach((item,quantity) -> System.out.println("\t" + item.name + " : " + quantity));
 		System.out.println("\t*****************");
@@ -85,6 +78,7 @@ public class Inventory {
 	public Character usePotion(Character player, Potion item) {
 		player.healthPoints += item.healPoints;
 		player.mana += item.manaRestore;
+		
 		return player;
 	}
 	

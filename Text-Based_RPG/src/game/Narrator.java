@@ -1,5 +1,6 @@
 package game;
 import java.util.Scanner;
+import java.util.concurrent.*;
 
 
 public class Narrator {
@@ -65,9 +66,10 @@ public class Narrator {
 	static Scanner narrator = new Scanner(System.in);
 	static Character character = new Character();
 	static CombatTurnManager ctm = new CombatTurnManager();
-	static SimpleMob mob;
+	static Mob mob;
 	static SimpleMobGenerator generator;
 	static Bag bag = new Bag();
+	static TimeUnit time = TimeUnit.SECONDS;
 	
 	public static void main(String[] args) {
 		// TODO
@@ -105,21 +107,40 @@ public class Narrator {
 		
 	}
 	
-	public static void playDemo() { // Starts Demo
-		//String input = narrator.nextLine();
-		
-		// We should maybe sleep everytime we print a line because I believe it will just spam print all of these lines
-		
-		System.out.println("Narrator: Welcome to the demo of our Fantasy RPG!");
+	public static void playDemo() { 
+		// Starts Demo //
+		System.out.println("Welcome to the demo of our Fantasy RPG!");
+		sleep(2);
+	//Intro narration
+		System.out.println("Narrator: Your head feels heavy as you wake up dazed and confused.");
+		sleep(2);
+		System.out.println("You reach to the source of the pain, the back of your head, and a sharp pain pulses through your head!");
+		sleep(2);
+		System.out.println("That's not good...");
+		sleep(2);
+		System.out.println("You manage to stand with the strength you have left.");
+		sleep(2);
+		System.out.println("You take a good look around and find yourself in a cave with stalagmites hanging from the ceiling.");
+		sleep(2);
+		System.out.println("You also notice an erie green light emmiting in the cave, but you can't locate it's origin.");
+		sleep(2);
+		System.out.println("The rining in your ears suddenly transforms into words coming from a stanger behind you.");
+		sleep(2);
+		System.out.println("Was he there the whole time?");
+		sleep(2);
 		System.out.println("Adventurer: You there!");
+		sleep(2);
 		System.out.println("Adventurer: What is your name?");
 		
 		String name = narrator.nextLine();
 		character.name = name;
 
-		System.out.println("Adventurer: " + character.name + " was it?");		
+		System.out.println("Adventurer: " + character.name + " was it?");	
+		sleep(2);
 		System.out.println("Adventurer: Now that is an excellent name which befits a true warrior such as yourself.");
+		sleep(2);
 		System.out.println("Adventurer: Now what type of warrior are you, " + character.name + "?");
+		sleep(2);
 		System.out.println("Narrator: Your class choices are: \n\tRogue"
 				+ "\n\tWarrior \n\tArcher \n\tKnight \n\tMage \n\tPeasant");
 		
@@ -134,6 +155,7 @@ public class Narrator {
 				character = character.chooseClass(input);
 
 				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be nimble on your feet!");
+				sleep(2);
 				break;
 			}
 			
@@ -141,12 +163,14 @@ public class Narrator {
 				character = character.chooseClass(input);
 
 				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: You must be an ox of a man to be able to draw that behemoth of a bow.");
+				sleep(2);
 				break;
 			}
 			else if (input.equals("Warrior") || input.equals("w") || input.equals("warrior")) {
 				character = character.chooseClass(input);
 
 				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: If you are a warrior, then where is your armor?");
+				sleep(2);
 				break;
 			}
 			
@@ -154,6 +178,7 @@ public class Narrator {
 				character = character.chooseClass(input);
 
 				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: What is someone of your stature doing exploring a dungeon?");
+				sleep(2);
 				break;
 			}
 			
@@ -161,6 +186,7 @@ public class Narrator {
 				character = character.chooseClass(input);
 
 				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: Shouldn't you be reading some books?");
+				sleep(2);
 				break;
 			}
 			
@@ -168,6 +194,7 @@ public class Narrator {
 				character = character.chooseClass(input);
 
 				System.out.println("Adventurer: Ah you are a " + character.CharClass + "." + "\nAdventurer: Only someone who has nothing left would come to this wretched place.");
+				sleep(2);
 				break;
 			}
 			
@@ -177,26 +204,65 @@ public class Narrator {
 			
 			}
 		}
-
+		System.out.println("Adventurer: Oh by the Gods! What is that!?");
+		sleep(2);
+		System.out.println("Narrator: You turn your head to find a mysterious shadow behind you! \n" 
+				+ "\t You draw your " + character.weapon.name + " and prepare for a battle!");
+		
 		int mobLvlUp = 1; //Sets level mob is at. Progressivly gets more difficult to fight. 
-		while(mobLvlUp != 5) {//start of while loop
+		while(mobLvlUp != 4) {//start of while loop
 			generator = new SimpleMobGenerator();
 			mob = generator.createRandomEncounter(mobLvlUp);
 			ctm.startCombatEncounter(character, mob);
+			System.out.println("\nYou have found a potion on the body of your enemy");
 			bag.randomLootDrop(character);
 			character.characterLevelUp(mobLvlUp);
-			System.out.println("\nYou have found a potion on the body of your enemy");
 			character.inventory.displayInventory();
 			//bag.grabLoot(); //maybe gives our player an opportunity to grab loot then on to the next fight!
 			mobLvlUp++;
 		}//end of while loop
-//		
+	
+		System.out.println("Adventurer: Thank you for saving me! You're a brave adventurer for fending off those beasts!");
+		System.out.println("Here is a reward for protecting me...");
+		bag.randomLootDrop(character); 
+		sleep(1);
+		bag.randomLootDrop(character);
+		sleep(1);
+		bossEvent();
+		
+		
 		
 	}
 	
 	public static String help() {
 		String help = "Commands you can type:\n\t a: Attack\n\t i: Inventory\n\t in: Inspect\n\t f: Flee\n";
 		return help;
+	}
+	
+	public static void bossEvent() {
+		System.out.println("Narrator: You then continue your journey through the cave you woke up in."
+				+ "\nYou learn from the strange adventurer that you encountered that this cave is named The Cave Of Forever."
+				+ "\nAlmost seems somewhat unimaginative..."
+				+ "\nLegend has it, that once someone enters the cave, they never come out until they have faced a great trial."
+				+ "\nI sense some forshadowing happening...");
+		sleep(2);
+		System.out.println("BOOM");
+		sleep(2);
+		System.out.println("BOOM");
+		sleep(2);
+		System.out.println("Adventurer: Wait... Do you hear that?");
+		BossMobGenerator generator = new BossMobGenerator();
+		mob = generator.createRandomEncounter();
+		
+	}
+	
+	public static void sleep(int seconds) {
+		try {
+			time.sleep(seconds);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

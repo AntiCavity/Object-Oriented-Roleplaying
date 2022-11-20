@@ -13,11 +13,9 @@ public class CombatTurnManager {
 	
 	Character player;
 	Mob mob;
-	//SimpleMobGenerator generator;
+	int extraDamage;
 		
 	public void startCombatEncounter(Character p, Mob m) {
-		//generator = new SimpleMobGenerator();
-		//mob = generator.createRandomEncounter();
 		if (m.getClass().getName().equals("game.SimpleMob")) {
 			mob = (SimpleMob) m;
 		}
@@ -35,18 +33,12 @@ public class CombatTurnManager {
 		commandSet.add("help");
 		
 		//TODO Maybe move this to Narrator for a linear experience
-		System.out.println("Adventurer: Oh by the Gods! What is that thing!?");
-		System.out.println("Narrator: You turn your head to find a " + mob.name + " behind you! \n" 
-				+ "\t You draw your " + player.weapon.name + " and prepare for a battle!");
-		System.out.println("TIP: To find out what commands you can input, type 'help' in the command line");
+		System.out.println("A " + mob.name + " appeared from the darkness of the cave!");
+		System.out.println("TIP: To find out what commands you can use, type 'help' in the command line");
 		
 		while (mob.healthPoints > 0 && player.healthPoints > 0) {
 			
-			System.out.println("\nYour HP: " + player.healthPoints + "\t" + mob.name + " HP: " + mob.healthPoints + "\n");
-			
-			System.out.println("Your mana: " + player.mana + "\n");
-			
-			System.out.println("Narrator: What do you want to do?");
+			displayStats();
 			
 			String input = combatCommand.nextLine();
 			
@@ -119,18 +111,21 @@ public class CombatTurnManager {
 						attackDescription = skill2.skillDescription;
 						}
 				
-					if (errCounter == true) {
+					if (errCounter == true || input.equals(null)) {
 					System.out.println("Invalid Skill.\nPlease check your spelling.");
+//					break;
 			
 					}
 			
 					else if (manaChecker == true) {
 					System.out.println("YOU HAVE NO MANA");
+					stop = true;
+//					break;
 					}
 				}	
 			}
 		
-			System.out.println(attackDescription);
+			try{if (!attackDescription.equals(null)) {System.out.println(attackDescription);}} catch (NullPointerException e) {}
 			System.out.println("Narrator: You dealt: " + playerDmg + " damage!");
 			mob.healthPoints -= playerDmg;
 		
@@ -138,8 +133,8 @@ public class CombatTurnManager {
 				System.out.println("\nThe " + mob.name + " lunged at you!\n");
 				System.out.println("Narrator: You received " + mob.baseDamage + " damage.");
 				player.healthPoints -= mob.baseDamage;
+				break;
 				}
-			
 		}
 	}
 	
@@ -191,8 +186,18 @@ public class CombatTurnManager {
 		return true;
 	}
 	
+	public boolean displayStats() {
+		System.out.println("\nYour HP: " + player.healthPoints + "\t" + mob.name + " HP: " + mob.healthPoints + "\n");
+		
+		System.out.println("Your mana: " + player.mana + "\n");
+		
+		System.out.println("Narrator: What do you want to do?");
+		return true;
+	}
+	
 	public boolean gameOver() {
-		System.out.println(" ::::::::      :::     ::::    ::::  ::::::::::  ::::::::  :::     ::: :::::::::: :::::::::  \r\n"
+		System.out.println(
+				  " ::::::::      :::     ::::    ::::  ::::::::::  ::::::::  :::     ::: :::::::::: :::::::::  \r\n"
 				+ ":+:    :+:   :+: :+:   +:+:+: :+:+:+ :+:        :+:    :+: :+:     :+: :+:        :+:    :+: \r\n"
 				+ "+:+         +:+   +:+  +:+ +:+:+ +:+ +:+        +:+    +:+ +:+     +:+ +:+        +:+    +:+ \r\n"
 				+ ":#:        +#++:++#++: +#+  +:+  +#+ +#++:++#   +#+    +:+ +#+     +:+ +#++:++#   +#++:++#:  \r\n"
